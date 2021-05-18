@@ -6,7 +6,7 @@ function push() {   //上傳函數
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({      //用JSON包起來傳送
-            name: '87white'     //想要傳給php的東西
+            name: '877white'     //想要傳給php的東西
         })
     }).then(response => {       //從php傳回來的東西
         response.json().then(result => {    //傳回來的東西有用過JSON_encode包裝 所以接收的時候要用json()來解開包裝
@@ -25,8 +25,7 @@ function get() {    //抓取函數
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
-        credentials: "include",     //不用動
+        }
     }).then(response => {
         response.json().then(result => {
             var name = result.name
