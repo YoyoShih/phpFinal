@@ -2,6 +2,7 @@ function loginFunc() {
     const form = document.forms['login']
     const account = form.elements.account.value
     const password = form.elements.password.value
+
     if (!isValidPass(password)) {
         //請輸入合法的密碼
     }
@@ -23,12 +24,9 @@ function loginFunc() {
                     window.location.href = 'main-page.html'
                 }
                 else {
-                    if (result.validAcc) {
-                        console.log('Invalid account')
-                    }
-                    else if (result.validPass) {
-                        console.log('Invalid password')
-                    }
+                    console.log('Invalid account')
+                    const text = document.getElementsByClassName('loginFail')[0]
+                    text.style.opacity = 1
                 }
             })
         })
@@ -40,18 +38,16 @@ function isValidPass(password) {
     var capital = /[A-Z]/
     var lower = /[a-z]/
      if(password.length > 20){
-         return [false,""]
+         return false
      }
      else if(!capital.test(password)){
-        return [false,""]
+        return false
      }
      else if(!lower.test(password)){
-        return [false,""]
+        return false
      }
      else if(!i.test(password)){
-        return [false," "]
+        return false
      }
      return true
-     }
-     
 }
