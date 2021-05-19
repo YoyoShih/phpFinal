@@ -1,0 +1,33 @@
+.wrap {
+  background-color: #f3f7ff;
+  height: 100vh;
+}
+
+.logo {
+  background-color: black;
+  height: 40vh;
+  left: 40vw;
+  position: fixed;
+  top: 15vh;
+  width: 20vw;
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  left: 42vw;
+  position: fixed;
+  top: 60vh;
+  width: 16vw;
+}
+
+.loginBtn {
+  height: 4vh;
+  left: 48.5vw;
+  position: fixed;
+  text-align: center;
+  top: 85vh;
+  width: 3vw;
+}

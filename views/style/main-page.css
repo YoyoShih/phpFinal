@@ -9,46 +9,74 @@
   color: white;
   height: 100vh;
   margin: 0;
+  position: fixed;
   width: 20vw;
   z-index: 1;
 }
 
-.left-nav > li {
+.left-nav > div {
+  border-bottom: 1px solid white;
+  cursor: pointer;
   font-size: 1.7vw;
-  height: 8vh;
-  line-height: 8vh;
+  height: 10vh;
+  line-height: 10vh;
+  padding-left: 3vw;
 }
 
-.left-nav > li:hover {
+.left-nav > div:hover {
   background-color: #a2b6db;
+}
+
+.left-nav > div:first-child:hover {
+  background: none;
 }
 
 .middle-main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 200vh;
+  margin-left: 20vw;
   width: 55vw;
 }
 
 .middle-main-top {
-  background-color: #344d7b;
-  height: 10vh;
+  background-color: #344d7be5;
+  height: 12vh;
   left: 0vw;
   position: fixed;
   width: 100vw;
 }
 
+.middle-main-top-block {
+  background-color: #b5cfff44;
+  border-radius: 1vh;
+  height: 7vh;
+  position: absolute;
+  right: 27vw;
+  top: 2.5vh;
+  width: 20vw;
+}
+
+.middle-main-middle {
+  background: linear-gradient(#344d7b, #050d1b);
+  box-shadow: inset 0.1vmin 0 3vmin black;
+  height: 88vh;
+  margin-top: 12vh;
+  width: 55vw;
+}
+
 .middle-main-below {
-  background: linear-gradient(#344d7b, black);
-  box-shadow: inset 0.1vmin 0 3vmin #050d1b;
-  height: 90vh;
-  margin-top: 10vh;
+  background-color: black;
+  box-shadow: inset 0.1vmin 0 3vmin black;
+  height: 100vh;
   width: 55vw;
 }
 
 .right-link {
   background-color: #121e35;
   height: 100vh;
+  position: fixed;
+  right: 0;
   width: 25vw;
   z-index: 1;
 }
