@@ -20,6 +20,7 @@ function loginFunc() {
             response.json().then(result => {
                 if (result.loginSucc) {
                     console.log('Login Success!')
+                    window.location.href = 'main-page.html'
                 }
                 else {
                     if (result.validAcc) {
