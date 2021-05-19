@@ -16,4 +16,5 @@ $result = mysqli_query($conn, $sql);
 echo json_encode([      //回傳的東西
     "succ" => true
 ]);
+
 ?>
