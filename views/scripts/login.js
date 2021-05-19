@@ -23,12 +23,9 @@ function loginFunc() {
                     window.location.href = 'main-page.html'
                 }
                 else {
-                    if (result.validAcc) {
-                        console.log('Invalid account')
-                    }
-                    else if (result.validPass) {
-                        console.log('Invalid password')
-                    }
+                    console.log('Invalid account')
+                    const text = document.getElementsByClassName('loginFail')[0]
+                    text.style.opacity = 1
                 }
             })
         })
@@ -36,5 +33,5 @@ function loginFunc() {
 }
 
 function isValidPass() {
-    return true
+    return false
 }
