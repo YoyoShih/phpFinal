@@ -17,8 +17,8 @@ function checkData($name,$password,$conn){
     if(mysqli_num_rows($result) == 0) {
         echo json_encode([      //回傳的東西
             "loginSucc" => false,
-            "validPass" => false,
-            "validAcc" => true
+            // "validPass" => false,
+            // "validAcc" => true
         ]);    
     }
     else{
@@ -27,15 +27,15 @@ function checkData($name,$password,$conn){
         if(mysqli_num_rows($result) == 0) {
             echo json_encode([      //回傳的東西
                 "loginSucc" => false,
-                "validPass" => true,
-                "validAcc" => false
+                // "validPass" => true,
+                // "validAcc" => false
             ]);    
         }
         else{
             echo json_encode([      //回傳的東西
                 "loginSucc" => true,
-                "validPass" => false,
-                "validAcc" => false
+                // "validPass" => false,
+                // "validAcc" => false
             ]); 
         }   
     }
