@@ -35,6 +35,23 @@ function loginFunc() {
     }
 }
 
-function isValidPass() {
-    return true
+function isValidPass(password) {
+    var i = /[0-9]+/
+    var capital = /[A-Z]/
+    var lower = /[a-z]/
+     if(password.length > 20){
+         return [false,""]
+     }
+     else if(!capital.test(password)){
+        return [false,""]
+     }
+     else if(!lower.test(password)){
+        return [false,""]
+     }
+     else if(!i.test(password)){
+        return [false," "]
+     }
+     return true
+     }
+     
 }
