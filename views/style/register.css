@@ -1,0 +1,32 @@
+.left-blank {
+  height: 100vh;
+  position: fixed;
+  width: 30vw;
+}
+
+.middle-main {
+  align-items: center;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  left: 30vw;
+  position: fixed;
+  width: 40vw;
+}
+
+.middle-main-title {
+  font-size: xx-large;
+}
+
+.right-blank {
+  height: 100vh;
+  position: fixed;
+  width: 30vw;
+}
+
+.fail {
+  color: #ff0000;
+  display: inline;
+  opacity: 0;
+}

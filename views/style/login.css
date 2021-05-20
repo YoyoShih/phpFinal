@@ -23,7 +23,7 @@
   width: 16vw;
 }
 
-.loginBtn {
+.login-btn {
   height: 4vh;
   left: 48.5vw;
   position: fixed;
@@ -32,7 +32,7 @@
   width: 3vw;
 }
 
-.loginFail {
+.login-fail {
   color: #ff0000;
   left: 46vw;
   opacity: 0;
