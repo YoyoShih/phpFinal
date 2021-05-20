@@ -2,9 +2,10 @@ function loginFunc() {
     const form = document.forms['login']
     const account = form.elements.account.value
     const password = form.elements.password.value
+    const text = document.getElementsByClassName('loginFail')[0]
 
     if (!isValidPass(password)) {
-        //請輸入合法的密碼
+        text.style.opacity = 1
     }
     else {
         fetch('http://localhost/final/phpFinal/models/login_check.php', { //white:http://localhost/phpFinal/models/login_check.php
@@ -14,19 +15,15 @@ function loginFunc() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                // email: email,
                 account: account,
                 password: password
             })
         }).then(response => {
             response.json().then(result => {
                 if (result.loginSucc) {
-                    console.log('Login Success!')
                     window.location.href = 'main-page.html'
                 }
                 else {
-                    console.log('Invalid account')
-                    const text = document.getElementsByClassName('loginFail')[0]
                     text.style.opacity = 1
                 }
             })
@@ -35,20 +32,16 @@ function loginFunc() {
 }
 
 function isValidPass(password) {
-    // var i = /[0-9]+/
-    // var capital = /[A-Z]/
-    // var lower = /[a-z]/
-    //  if(password.length > 20){
-    //      return false
-    //  }
-    //  else if(!capital.test(password)){
-    //     return false
-    //  }
-    //  else if(!lower.test(password)){
-    //     return false
-    //  }
-    //  else if(!i.test(password)){
-    //     return false
-    //  }
-     return true
+    var i = /[0-9]+/
+    var capital = /[A-Z]/
+    var lower = /[a-z]/
+    return (password.length > 20 || capital.test(password) || lower.test(password) || i.test(password))
+}
+
+function goRegisterFunc() {
+    window.location.href = 'register.html'
+}
+
+function goForgetPassFunc() {
+    window.location.href = 'forgetPassword.html'
 }

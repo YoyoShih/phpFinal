@@ -1,3 +1,19 @@
+.wrap {
+  animation: fade-in 0.5s ease-out 0s 1 normal forwards;
+  overflow: hidden;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translateX(-10vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0vw);
+    opacity: 1;
+  }
+}
+
 .left-blank {
   height: 100vh;
   position: fixed;
@@ -5,18 +21,38 @@
 }
 
 .middle-main {
-  align-items: center;
-  background-color: antiquewhite;
+  align-items: left;
   display: flex;
   flex-direction: column;
   height: 100vh;
   left: 30vw;
   position: fixed;
-  width: 40vw;
+  padding: 10vw;
+  padding-top: 3vw;
+  width: 20vw;
+  z-index: 2;
 }
 
 .middle-main-title {
   font-size: xx-large;
+}
+
+.form {
+  padding-left: 3vw;
+}
+
+.form > p {
+  font-size: x-large;
+}
+
+.form > input {
+  font-size: medium;
+}
+
+.register-btn {
+  margin-top: 2vh;
+  margin-left: 7vw;
+  width: 5vw;
 }
 
 .right-blank {
@@ -29,4 +65,36 @@
   color: #ff0000;
   display: inline;
   opacity: 0;
+  padding-left: 1vw;
+}
+
+.background {
+  animation: fade-repeat 2s ease-out 1s 1 normal forwards;
+  height: 60vw;
+  left: 20vw;
+  opacity: 0.6;
+  position: fixed;
+  top: -7vw;
+  width: 60vw;
+  z-index: 1;
+}
+
+.background-other {
+  animation: fade-repeat 2s ease-in-out 1s infinite alternate none;
+  height: 97vh;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  opacity: 0.6;
+}
+
+@keyframes fade-repeat {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.9;
+  }
 }
