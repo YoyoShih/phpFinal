@@ -1,10 +1,10 @@
 function registerFunc() {
     const form = document.forms['register']
     const account = form.elements.account.value
-    const password1 = form.elements.password1.value
-    const password2 = form.elements.password2.value
-    const mail = form.elements.mail.value
-    if (!isValidPass(password1,password2)) {
+    const password = form.elements.password.value
+    const passwordCheck = form.elements.passwordCheck.value
+    const email = form.elements.email.value
+    if (!isValidPass(password,passwordCheck)) {
         //請輸入合法的密碼
     }
     else if(!isValidEmail(email)) {
@@ -19,20 +19,20 @@ function registerFunc() {
             },
             body: JSON.stringify({
                 account: account,
-                password: password1,
-                mail: mail,
+                password: password,
+                email: email,
             })
         }).then(response => {
             response.json().then(result => {
-                if (result.loginSucc) {
-                    console.log('login Success!')     
+                if (result.regSucc) {
+                    console.log('Register Success!')     
                     window.location.href = 'login.html'  //改到登入畫面
                 }
                 else {
-                    if (result.validAcc) {
+                    if (result.accountError) {
                         console.log('Invalid account')      
                     }
-                    else if (result.validPass) {
+                    else if (result.emailError) {
                         console.log('Invalid password')       
                     }
                 }
@@ -41,29 +41,17 @@ function registerFunc() {
     }
 }
 
-function isValidPass(password1,password2){
+function isValidPass(password,passwordCheck){
     var i = /[0-9]+/
     var capital = /[A-Z]/
     var lower = /[a-z]/
-    if(password1!=password2){
-        return false
-    }
-    else if(password1.length > 20){
-        return false
-    }
-    else if(!capital.test(password1)){
-        return false
-    }
-    else if(!lower.test(password1)){
-        return false
-    }
-    else if(!i.test(password1)){
+    if(password != passwordCheck || password.length > 20 || !capital.test(password) || !lower.test(password) || !i.test(password)){
         return false
     }
     return true
 }
 
-function isValidMail(mail){
+function isValidMail(email){
     var str = /@/
     if(!str.test(email)){
         return false
