@@ -1,12 +1,10 @@
-function signinFunc() {
-    const form = document.forms['registerinin']
+function registerFunc() {
+    const form = document.forms['register']
     const account = form.elements.account.value
     const password1 = form.elements.password1.value
     const password2 = form.elements.password2.value
     const mail = form.elements.mail.value
-    const sticker = form.elements.sticker.value
-
-    if (!isValidPass(password)) {
+    if (!isValidPass(password1,password2)) {
         //請輸入合法的密碼
     }
     else if(!isValidEmail(email)) {
@@ -21,22 +19,21 @@ function signinFunc() {
             },
             body: JSON.stringify({
                 account: account,
-                password: password,
+                password: password1,
                 mail: mail,
-                sticker: sticker
             })
         }).then(response => {
             response.json().then(result => {
                 if (result.loginSucc) {
-                    console.log('Login Success!')
-                    window.location.href = 'main-page.html'
+                    console.log('login Success!')     
+                    window.location.href = 'login.html'  //改到登入畫面
                 }
                 else {
                     if (result.validAcc) {
-                        console.log('Invalid account')
+                        console.log('Invalid account')      
                     }
                     else if (result.validPass) {
-                        console.log('Invalid password')
+                        console.log('Invalid password')       
                     }
                 }
             })
@@ -44,29 +41,32 @@ function signinFunc() {
     }
 }
 
-function isValidPass(password){
-    // var i = /[0-9]+/
-    // var capital = /[A-Z]/
-    // var lower = /[a-z]/
-    //  if(password.length > 20){
-    //      return [false,""]
-    //  }
-    //  else if(!capital.test(password)){
-    //     return [false,""]
-    //  }
-    //  else if(!lower.test(password)){
-    //     return [false,""]
-    //  }
-    //  else if(!i.test(password)){
-    //     return [false," "]
-    //  }
-     return true
+function isValidPass(password1,password2){
+    var i = /[0-9]+/
+    var capital = /[A-Z]/
+    var lower = /[a-z]/
+    if(password1!=password2){
+        return false
+    }
+    else if(password1.length > 20){
+        return false
+    }
+    else if(!capital.test(password1)){
+        return false
+    }
+    else if(!lower.test(password1)){
+        return false
+    }
+    else if(!i.test(password1)){
+        return false
+    }
+    return true
 }
 
 function isValidMail(mail){
-    // var str = /@/
-    // if(!str.test(email)){
-    //     return [false," "]
-    // }
+    var str = /@/
+    if(!str.test(email)){
+        return false
+    }
     return true
 }
