@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>註冊「聽 der!」帳戶</title>
+        <link href="style/common.css" rel="stylesheet" type="text/css">
+        <link href="style/register.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="left-blank"></div>
+            <div class="middle-main">
+                <p class="middle-main-title">建立帳號</p>
+                <form>
+                    <p>帳號</p>
+                    <input name="account" placeholder="請輸入帳號名稱">
+                    <div class="fail">此帳號無效!請輸入其他帳號名稱</div>
+                    <br>
+                    <p>密碼</p>
+                    <input name="password" placeholder="請輸入密碼">
+                    <div class="fail">此密碼無效!請輸入其他密碼</div>
+                    <br>
+                    <input name="passwordCheck" placeholder="請再次輸入密碼">
+                    <div class="fail">請確認輸入密碼是否相同</div>
+                    <br>
+                    <p>信箱</p>
+                    <input name="email" placeholder="請輸入信箱">
+                    <div class="fail">此帳號無效!請輸入其他信箱</div>
+                </form>
+                <button class="register-btn" onclick="registerFunc()">建立帳號</button>
+            </div>
+            <div class="right-blank"></div>
+        </div>
+        <script src="scripts/register.js"></script>
+    </body>
+</html>
