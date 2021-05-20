@@ -4,8 +4,11 @@ function registerFunc() {
     const password = form.elements.password.value
     const passwordCheck = form.elements.passwordCheck.value
     const email = form.elements.email.value
-    if (!isValidPass(password,passwordCheck)) {
+    if (!isValidPass(password)) {
         //請輸入合法的密碼
+    }
+    else if (!isValidPassCheck(password, passwordCheck)) {
+        //請確認密碼輸入相同
     }
     else if(!isValidEmail(email)) {
         //輸入合法mail
@@ -41,14 +44,15 @@ function registerFunc() {
     }
 }
 
-function isValidPass(password,passwordCheck){
+function isValidPass(password){
     var i = /[0-9]+/
     var capital = /[A-Z]/
     var lower = /[a-z]/
-    if(password != passwordCheck || password.length > 20 || !capital.test(password) || !lower.test(password) || !i.test(password)){
-        return false
-    }
-    return true
+    return !(password.length > 20 || !capital.test(password) || !lower.test(password) || !i.test(password))
+}
+
+function isValidPassCheck(password,passwordCheck) {
+    return !(password != passwordCheck)
 }
 
 function isValidMail(email){
