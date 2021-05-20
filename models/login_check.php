@@ -9,9 +9,9 @@ $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
 $username = $_POST['account'];     
 $password = $_POST['password'];
-checkData($name,$password,$conn);
+checkData($username,$password,$conn);
 
-function checkData($name,$password,$conn){
+function checkData($username,$password,$conn){
     $sql = "SELECT * FROM user_account WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0) {

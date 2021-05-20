@@ -10,7 +10,7 @@ $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 $username = $_POST['account'];     //從POST裡 抓取name
 $email = $_POST['email'];
 $password = $_POST['password'];
-insertData($email,$name,$password,$conn);
+insertData($email,$username,$password,$conn);
 
 function insertData($email,$username,$password,$conn){
     $email_sql = "SELECT * FROM user_account WHERE email = '$email'";

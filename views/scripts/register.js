@@ -5,12 +5,15 @@ function registerFunc() {
     const passwordCheck = form.elements.passwordCheck.value
     const email = form.elements.email.value
     if (!isValidPass(password)) {
+        console.log(1)
         //請輸入合法的密碼
     }
     else if (!isValidPassCheck(password, passwordCheck)) {
+        console.log(2)
         //請確認密碼輸入相同
     }
     else if(!isValidEmail(email)) {
+        console.log(3)
         //輸入合法mail
     }
     else {
@@ -36,7 +39,7 @@ function registerFunc() {
                         console.log('Invalid account')      
                     }
                     else if (result.emailError) {
-                        console.log('Invalid password')       
+                        console.log('Invalid email')       
                     }
                 }
             })
@@ -55,7 +58,7 @@ function isValidPassCheck(password,passwordCheck) {
     return !(password != passwordCheck)
 }
 
-function isValidMail(email){
+function isValidEmail(email){
     var str = /@/
     if(!str.test(email)){
         return false
