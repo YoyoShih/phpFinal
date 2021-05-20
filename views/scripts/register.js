@@ -3,7 +3,7 @@ function registerFunc() {
     const account = form.elements.account.value
     const password1 = form.elements.password1.value
     const password2 = form.elements.password2.value
-    const mail = form.elements.mail.value
+    const email = form.elements.mail.value
     if (!isValidPass(password1,password2)) {
         //請輸入合法的密碼
     }
@@ -11,7 +11,7 @@ function registerFunc() {
         //輸入合法mail
     }
     else {
-        fetch('http://localhost/User_Project/login.php', {
+        fetch('http://localhost/final/phpFinal/models/registration_check.php', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -20,12 +20,12 @@ function registerFunc() {
             body: JSON.stringify({
                 account: account,
                 password: password1,
-                mail: mail,
+                email: email,
             })
         }).then(response => {
             response.json().then(result => {
-                if (result.loginSucc) {
-                    console.log('login Success!')     
+                if (result.regSucc) {
+                    console.log('registration Success!')     
                     window.location.href = 'login.html'  //改到登入畫面
                 }
                 else {
