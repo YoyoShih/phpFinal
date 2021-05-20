@@ -7,12 +7,12 @@ $_POST = json_decode($rest_json, true);     //接收js那邊傳過來的東西
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
-$name = $_POST['account'];     
+$username = $_POST['account'];     
 $password = $_POST['password'];
-checkData($name,$password,$conn);
+checkData($username,$password,$conn);
 
-function checkData($name,$password,$conn){
-    $sql = "SELECT * FROM user_account WHERE username = '$name' AND password = '$password'";
+function checkData($username,$password,$conn){
+    $sql = "SELECT * FROM user_account WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0) {
         echo json_encode([      //回傳的東西

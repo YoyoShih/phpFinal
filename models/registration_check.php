@@ -7,12 +7,12 @@ $_POST = json_decode($rest_json, true);     //接收js那邊傳過來的東西
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
-$name = $_POST['name'];     //從POST裡 抓取name
+$username = $_POST['account'];     //從POST裡 抓取name
 $email = $_POST['email'];
 $password = $_POST['password'];
-insertData($email,$name,$password,$conn);
+insertData($email,$username,$password,$conn);
 
-function insertData($email,$name,$password,$conn){
+function insertData($email,$username,$password,$conn){
     $email_sql = "SELECT * FROM user_account WHERE email = '$email'";
     $username_sql = "SELECT * FROM user_account WHERE username = '$username'";
     $email_result = mysqli_query($conn, $email_sql);
@@ -35,11 +35,6 @@ function insertData($email,$name,$password,$conn){
                 "regSucc" => true
             ]);
         } 
-        else{
-            echo json_encode([   
-                "regError" => true
-            ]);    
-        }
     }
 }
 

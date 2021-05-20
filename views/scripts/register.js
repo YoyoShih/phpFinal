@@ -19,7 +19,7 @@ function registerFunc() {
         emailFail.style.opacity = 1
     }
     else {
-        fetch('http://localhost/User_Project/login.php', {
+        fetch('http://localhost/final/phpFinal/models/registration_check.php', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -61,7 +61,7 @@ function isValidPassCheck(password,passwordCheck) {
     return password == passwordCheck
 }
 
-function isValidMail(email){
+function isValidEmail(email){
     var str = /@/
     return str.test(email)
 }
