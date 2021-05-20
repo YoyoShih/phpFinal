@@ -7,7 +7,7 @@ function loginFunc() {
         //請輸入合法的密碼
     }
     else {
-        fetch('http://localhost/phpFinal/models/login_check.php', { //yoyo:http://localhost/User_Project/login.php
+        fetch('http://localhost/final/phpFinal/models/login_check.php', { //white:http://localhost/phpFinal/models/login_check.php
             method: "POST",
             headers: {
                 'Accept': 'application/json',
