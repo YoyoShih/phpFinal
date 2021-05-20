@@ -12,32 +12,17 @@ $password = $_POST['password'];
 checkData($name,$password,$conn);
 
 function checkData($name,$password,$conn){
-    $sql = "SELECT * FROM user_account WHERE username = '$name'";
+    $sql = "SELECT * FROM user_account WHERE username = '$name' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0) {
         echo json_encode([      //回傳的東西
-            "loginSucc" => false,
-            // "validPass" => false,
-            // "validAcc" => true
+        "loginSucc" => false
         ]);    
     }
     else{
-        $sql = "SELECT * FROM user_account WHERE username = '$name' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) == 0) {
-            echo json_encode([      //回傳的東西
-                "loginSucc" => false,
-                // "validPass" => true,
-                // "validAcc" => false
-            ]);    
-        }
-        else{
-            echo json_encode([      //回傳的東西
-                "loginSucc" => true,
-                // "validPass" => false,
-                // "validAcc" => false
-            ]); 
-        }   
+        echo json_encode([      //回傳的東西
+            "loginSucc" => true
+        ]);
     }
 }
 ?>
