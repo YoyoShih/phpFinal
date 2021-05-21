@@ -1,14 +1,20 @@
 function push() {   //上傳函數
-    fetch('http://localhost/final/phpFinal/models/push.php', {   //使用xampp開啟的php 記得改成你要使用的php檔
+    fetch('http://localhost/final/phpFinal/models/user_information.php', {   //使用xampp開啟的php 記得改成你要使用的php檔
         method: "POST",     //POST函數才能含有body
         headers: {      //不用動
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({      //用JSON包起來傳送
-            name: '87white',        //想要傳給php的東西
-            email: 'rickwu123@gmail.com',
-            password: '12345'
+        body: JSON.stringify({            //用JSON包起來傳送
+            // name: '87white',              //想要傳給php的東西
+            // email: 'rickwu123@gmail.com',
+            // password: '12345'
+            username: "rickr",          //測試user_information用
+            nickname: "handsomeboy",
+            sex: "Male",
+            birthday: "2001-06-24",
+            relationship: "single",
+            musicGenre: "Jazz&Funk"
         })
     }).then(response => {       //從php傳回來的東西
         response.json().then(result => {    //傳回來的東西有用過JSON_encode包裝 所以接收的時候要用json()來解開包裝
