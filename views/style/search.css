@@ -1,0 +1,46 @@
+.main-block {
+  background-color: white;
+  height: 95vh;
+  left: 35vw;
+  position: fixed;
+  top: 2.5vh;
+  width: 30vw;
+  z-index: 1;
+}
+
+.background {
+  background-color: #121e35;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.like {
+  cursor: pointer;
+  height: 4vw;
+  left: 67.5vw;
+  position: fixed;
+  top: 47vh;
+  z-index: 3;
+}
+
+.dislike {
+  cursor: pointer;
+  height: 4vw;
+  left: 28.5vw;
+  position: fixed;
+  top: 47vh;
+  z-index: 3;
+}
+
+.wrap {
+  box-shadow: inset 0 0 3vh 1vh black;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+}
