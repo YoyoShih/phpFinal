@@ -25,4 +25,10 @@ function checkData($username,$password,$conn){
         ]);
     }
 }
+
+/*
+session_start( );
+$_SESSION ['account'] = $_POST['account'];  
+*/
+
 ?>

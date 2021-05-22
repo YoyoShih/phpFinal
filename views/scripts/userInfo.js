@@ -77,6 +77,7 @@ function goUserInfoFunc() {
         var btn = document.createElement('button')
         btn.className = 'update-btn'
         btn.innerHTML = "更新"
+        btn.addEventListener('click',updateFunc)
         userInfoBelow.append(form,btn)
         wrap.append(userInfoBelow)
 
