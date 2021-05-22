@@ -13,6 +13,12 @@ $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 // $birthday = "2001-06-24";
 // $relationship = "single";
 // $musicGenre = "Jazz";
+
+/*
+session_start( );
+$username = $_SESSION ['account'];  
+*/
+
 $username = $_POST['username'];
 $nickname = $_POST['nickname'];
 $sex = $_POST['sex'];
@@ -42,3 +48,6 @@ echo json_encode([
 ]);
 
 ?>
+
+
+
