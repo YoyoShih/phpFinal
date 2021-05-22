@@ -80,3 +80,19 @@
   width: 25vw;
   z-index: 1;
 }
+
+.background-other {
+  animation: move-left 1.5s ease-out 0s 1 normal forwards;
+  height: 100vh;
+  left: 100%;
+  position: fixed;
+}
+
+@keyframes move-left {
+  0% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(-250vw);
+  }
+}

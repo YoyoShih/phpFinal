@@ -21,7 +21,7 @@ function loginFunc() {
         }).then(response => {
             response.json().then(result => {
                 if (result.loginSucc) {
-                    window.location.href = 'main-page.html'
+                    window.location.href = 'mainPage.html'
                 }
                 else {
                     text.style.opacity = 1

@@ -7,11 +7,9 @@ setTimeout(() => {
     logo.remove()
     left.remove()
     right.remove()
-}, 2000)
+}, 2000);
 
-searchPeople()
-
-function searchPeople() {
+(function searchPeople() {
     fetch('http://localhost/final/phpFinal/models/search.php', {
         method: "GET",
         headers: {
@@ -23,7 +21,7 @@ function searchPeople() {
             //拿到隨機三個人
         })
     })
-}
+})()
 
 const like = document.getElementsByClassName('like')[0]
 
