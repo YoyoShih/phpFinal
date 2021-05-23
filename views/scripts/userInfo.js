@@ -3,22 +3,22 @@ var birthday = '';
 var emotional = '';
 var music = '';
 
-(function getUserInfo() {
-    fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    }).then(response => {
-        response.json().then(result => {
-            sex = result.sex
-            birthday = result.birthday
-            emotional = result.emotional
-            music = result.music
-        })
-    })
-})()
+// (function getUserInfo() {                    //先讓我註解一下
+//     fetch('http://localhost/final/phpFinal/models/change.php', {
+//         method: "GET",
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//     }).then(response => {
+//         response.json().then(result => {
+//             sex = result.sex
+//             birthday = result.birthday
+//             emotional = result.emotional
+//             music = result.music
+//         })
+//     })
+// })()
 
 function goUserInfoFunc() {
     const backround = document.createElement('img')
@@ -63,7 +63,7 @@ function goUserInfoFunc() {
         p3.innerHTML = "感情狀態"
         var input3 = document.createElement('input')
         input3.type = 'text'
-        input3.name = 'emotional'
+        input3.name = 'relationship'
         input3.placeholder = '請輸入感情狀態'
         input3.value = emotional
         var p4 = document.createElement('p')
@@ -101,25 +101,26 @@ function updateFunc() {
     const form = document.forms['update']   //從update拿到
     const sex = form.elements.sex.value     //性別
     const birthday = form.elements.birthday.value   //YYYY-MM-DD出生日期
-    const emotional = form.elements.emotional.value   //感情狀態
+    const relationship = form.elements.relationship.value   //感情狀態
     const music = form.elements.music.value        //喜歡音樂類型
     
-    fetch('http://localhost/User_Project/update.php', {
+    fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            nickname: "可愛小白",  
             sex: sex,
             birthday: birthday,
-            emotional: emotional,
-            music: music
+            relationship: relationship, 
+            musicGenre: music
         })
     }).then(response => {
         response.json().then(result => {
             if (result.updateSucc) {         
-                window.location.href = 'main-page.html'  //改到主頁面
+                window.location.href = 'mainPage.html'  //改到主頁面
             }
             else {
                 if (result.validsex) {                   
