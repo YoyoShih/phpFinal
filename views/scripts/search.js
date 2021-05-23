@@ -1,3 +1,13 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBKzDjs8rZ9huxr3hkUsyGWKFYJFqR8ls0",
+    authDomain: "phpfinal-2a350.firebaseapp.com",
+    projectId: "phpfinal-2a350",
+    storageBucket: "phpfinal-2a350.appspot.com",
+    messagingSenderId: "158655882955",
+    appId: "1:158655882955:web:ae4ac58b858a1167d75d4e"
+};
+firebase.initializeApp(firebaseConfig);
+
 setTimeout(() => {
     var mask = document.getElementsByClassName('mask')[0]
     var logo = document.getElementsByClassName('logo')[0]
