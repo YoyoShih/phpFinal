@@ -7,6 +7,7 @@
         <link href="style/search.css" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <div class="start" onclick="firstPlay(this)">Start!</div>
         <div class="main-block"></div>
         <div class="background"></div>
         <img class="like" onclick="likeOrDislike(this)" src="../src/next.png" alt="like">
@@ -17,6 +18,7 @@
         <img class="right" src="../src/right.png">
         <div class="mask"></div>
         <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
         <script src="scripts/search.js"></script>
     </body>
 </html>

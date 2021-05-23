@@ -21,7 +21,6 @@ function loginFunc() {
         }).then(response => {
             response.json().then(result => {
                 if (result.loginSucc) {
-                    //console.log(result.loginSucc);
                     window.location.href = 'mainPage.html'
                 }
                 else {

@@ -5,6 +5,7 @@ var birthday = '';
 var emotional = '';
 var music = '';
 
+//  取得account的函數 進入頁面會馬上執行一次
 (function getAccount() {
     fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "GET",
@@ -17,8 +18,9 @@ var music = '';
             account = result.account
         })
     })
-})()
+})();
 
+//  如果已經改過資料 將資料填入input裡
 (function getUserInfo() {
     fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
         method: "POST",
@@ -40,8 +42,8 @@ var music = '';
     })
 })()
 
+//  第一次按下帳戶資訊時執行動畫 並更改頁面
 var temp = false
-
 function goUserInfoFunc() {
     if (temp) return
     temp = true
@@ -128,6 +130,7 @@ function goUserInfoFunc() {
     },800)
 }
 
+//  填寫完畢後 將資料上傳
 function updateFunc() {
     const form = document.forms['update']   //從update拿到
     const nickname = form.elements.nickname .value     //暱稱
