@@ -1,16 +1,34 @@
+var account = '';
 var nickname = '';
 var sex = '';
 var birthday = '';
 var emotional = '';
 var music = '';
 
-(function getUserInfo() {
-    fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
+(function getAccount() {
+    fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        response.json().then(result => {
+            account = result.account
+        })
+    })
+})()
+
+(function getUserInfo() {
+    fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
+        body: JSON.stringify({
+            account: account
+        })
     }).then(response => {
         response.json().then(result => {
             nickname = result.nickname
@@ -118,7 +136,7 @@ function updateFunc() {
     const relationship = form.elements.relationship.value   //感情狀態
     const music = form.elements.music.value        //喜歡音樂類型
     
-    fetch('http://localhost/User_Project/update.php', {
+    fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -134,7 +152,7 @@ function updateFunc() {
     }).then(response => {
         response.json().then(result => {
             if (result.updateSucc) {         
-                window.location.href = 'main-page.html'  //改到主頁面
+                window.location.href = 'mainPage.html'  //改到主頁面
             }
             else {
                 if (result.validSex) {                   

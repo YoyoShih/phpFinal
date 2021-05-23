@@ -1,4 +1,6 @@
 <?php
+session_start();
+$sn = session_id();
 require dirname(__FILE__).'\db_connect.php';
 require dirname(__FILE__).'\core.php';
 
@@ -7,28 +9,31 @@ $_POST = json_decode($rest_json, true);     //接收js那邊傳過來的東西
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
-$username = $_POST['account'];     
-$password = $_POST['password'];
-checkData($username,$password,$conn);
-
-function checkData($username,$password,$conn){
-    $sql = "SELECT * FROM user_account WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) == 0) {
-        echo json_encode([      //回傳的東西
-        "loginSucc" => false
-        ]);    
-    }
-    else{
-        echo json_encode([      //回傳的東西
-            "loginSucc" => true
-        ]);
+if(isset($_SESSION['account'])){
+    echo json_encode([      
+        "account" => $_SESSION['account']
+    ]);   
+}
+else{
+    $username = $_POST['account'];     
+    $password = $_POST['password'];
+    checkData($username,$password,$conn);
+    function checkData($username,$password,$conn){
+        $sql = "SELECT * FROM user_account WHERE username = '$username' AND password = '$password'";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) == 0) {
+            echo json_encode([     
+            "loginSucc" => false
+            ]);    
+        }
+        else{
+            $_SESSION['account'] = $username;
+            echo json_encode([      
+                "loginSucc" => true,
+            ]);
+        }
     }
 }
 
-/*
-session_start( );
-$_SESSION ['account'] = $_POST['account'];  
-*/
 
 ?>

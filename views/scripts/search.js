@@ -19,13 +19,32 @@ setTimeout(() => {
     right.remove()
 }, 2000);
 
-(function searchPeople() {
-    fetch('http://localhost/final/phpFinal/models/search.php', {
+var account = '';
+
+(function getAccount() {
+    fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        response.json().then(result => {
+            account = result.account
+        })
+    })
+})();
+
+(function searchPeople() {
+    fetch('http://localhost/final/phpFinal/models/search.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
+        body: JSON.stringify({
+            account: account
+        })
     }).then(response => {
         response.json().then(result => {
             //拿到隨機三個人

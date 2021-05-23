@@ -1,4 +1,4 @@
-<?php
+<?php 
 require dirname(__FILE__).'\db_connect.php';
 require dirname(__FILE__).'\core.php';
 
@@ -14,13 +14,8 @@ $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 // $relationship = "single";
 // $musicGenre = "Jazz";
 
-/*
-session_start( );
-$username = $_SESSION ['account'];  
-*/
-
-$username = $_POST['username'];
-$nickname = $_POST['nickname'];
+$username = "87white";
+$tnickname = $_POST['nickname'];
 $sex = $_POST['sex'];
 $birthday = $_POST['birthday'];
 $relationship = $_POST['relationship'];
@@ -44,8 +39,9 @@ function modifyData($username,$nickname,$sex,$birthday,$relationship,$musicGenre
     }
 }
 echo json_encode([     
-    "succ" => true
+    "updateSucc" => true
 ]);
+
 
 ?>
 
