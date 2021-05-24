@@ -8,7 +8,7 @@ function loginFunc() {
         text.style.opacity = 1
     }
     else {
-        fetch('http://localhost/User_Project/login_check.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
+        fetch('http://localhost/final/phpFinal/models/login_check.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
             method: "POST",
             headers: {
                 'Accept': 'application/json',

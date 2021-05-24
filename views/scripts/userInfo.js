@@ -7,7 +7,7 @@ var music = '';
 
 //  取得account的函數 進入頁面會馬上執行一次
 (function getAccount() {
-    fetch('http://localhost/User_Project/login_check.php', {
+    fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',

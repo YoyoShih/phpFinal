@@ -10,9 +10,5 @@ function logout() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(response => {
-        response.json().then(result => {
-            window.location.href = 'login.html'
-        })
-    })
+    }).then(window.location.href = 'login.html')
 }
