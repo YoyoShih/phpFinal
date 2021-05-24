@@ -30,9 +30,12 @@ function insertData($email,$username,$password,$conn){
         ]);        
     }
     else{
-        $sql = "INSERT INTO user_account (email, username, password)
+        $info_sql = "INSERT INTO user_info (username) VALUES ('$username')";
+        $info_result = mysqli_query($conn, $info_sql);
+        $account_sql = "INSERT INTO user_account (email, username, password)
         VALUES ('$email', '$username', '$password')";
-        if (mysqli_query($conn, $sql)) {
+        $account_result = mysqli_query($conn, $account_sql);
+        if ($account_result&&$info_result) {
             echo json_encode([   
                 "regSucc" => true
             ]);

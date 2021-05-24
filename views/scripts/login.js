@@ -14,6 +14,7 @@ function loginFunc() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 account: account,
                 password: password
@@ -21,6 +22,7 @@ function loginFunc() {
         }).then(response => {
             response.json().then(result => {
                 if (result.loginSucc) {
+                    console.log(result.account);
                     window.location.href = 'mainPage.html'
                 }
                 else {

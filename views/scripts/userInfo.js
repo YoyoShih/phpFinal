@@ -1,4 +1,4 @@
-var account = '';
+var account = '87';
 var nickname = '';
 var sex = '';
 var birthday = '';
@@ -7,15 +7,17 @@ var music = '';
 
 //  取得account的函數 進入頁面會馬上執行一次
 (function getAccount() {
-    fetch('http://localhost/final/phpFinal/models/user_information.php', {
+    fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        }
+        },
+        credentials: "include"
     }).then(response => {
         response.json().then(result => {
             account = result.account
+            console.log(result.account);
         })
     })
 })();
@@ -96,7 +98,7 @@ function goUserInfoFunc() {
         p4.innerHTML = "感情狀態"
         var input4 = document.createElement('input')
         input4.type = 'text'
-        input4.name = 'emotional'
+        input4.name = 'relationship'
         input4.placeholder = '請輸入感情狀態'
         input4.value = emotional
         var p5 = document.createElement('p')
@@ -133,12 +135,11 @@ function goUserInfoFunc() {
 //  填寫完畢後 將資料上傳
 function updateFunc() {
     const form = document.forms['update']   //從update拿到
-    const nickname = form.elements.nickname .value     //暱稱
+    const nickname = form.elements.nickname.value     //暱稱
     const sex = form.elements.sex.value     //性別
     const birthday = form.elements.birthday.value   //YYYY-MM-DD出生日期
     const relationship = form.elements.relationship.value   //感情狀態
     const music = form.elements.music.value        //喜歡音樂類型
-    
     fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "POST",
         headers: {
@@ -146,6 +147,7 @@ function updateFunc() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            account: account,
             nickname: nickname,
             sex: sex,
             birthday: birthday,
@@ -154,8 +156,9 @@ function updateFunc() {
         })
     }).then(response => {
         response.json().then(result => {
-            if (result.updateSucc) {         
-                window.location.href = 'mainPage.html'  //改到主頁面
+            if (result.updateSucc) {   
+                //console.log(result.account);      
+                //window.location.href = 'mainPage.html'  //改到主頁面
             }
             else {
                 if (result.validSex) {                   
