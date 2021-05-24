@@ -7,7 +7,7 @@ var music = '';
 
 //  取得account的函數 進入頁面會馬上執行一次
 (function getAccount() {
-    fetch('http://localhost/final/phpFinal/models/login_check.php', {
+    fetch('http://localhost/User_Project/login_check.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -16,15 +16,15 @@ var music = '';
         credentials: "include"
     }).then(response => {
         response.json().then(result => {
-            account = result.account
-            console.log(result.account);
+            console.log(result.account)
+            // account = result.account
         })
     })
 })();
 
 //  如果已經改過資料 將資料填入input裡
 (function getUserInfo() {
-    fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
+    fetch('http://localhost/User_Project/getUserInfo.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',
