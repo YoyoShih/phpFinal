@@ -14,7 +14,6 @@ function loginFunc() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            credentials: "include",
             body: JSON.stringify({
                 account: account,
                 password: password

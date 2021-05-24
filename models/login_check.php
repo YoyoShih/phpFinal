@@ -1,11 +1,12 @@
 <?php
 require dirname(__FILE__).'\db_connect.php';
 require dirname(__FILE__).'\core.php';
+session_id('phpFinal');
 session_start();
-
+//unset($_SESSION['account']);
 if(isset($_SESSION['account'])){              //!empty($_SESSION['account'])
     echo json_encode([      
-        "account" => "87"
+        "account" => $_SESSION['account']
     ]);   
 }
 else{

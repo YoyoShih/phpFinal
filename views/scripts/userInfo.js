@@ -1,8 +1,8 @@
-var account = '87';
+var account = '';
 var nickname = '';
 var sex = '';
 var birthday = '';
-var emotional = '';
+var relationship = '';
 var music = '';
 
 //  取得account的函數 進入頁面會馬上執行一次
@@ -12,18 +12,18 @@ var music = '';
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
-        credentials: "include"
+        }
     }).then(response => {
         response.json().then(result => {
             account = result.account
-            console.log(result.account);
+            console.log(account);
+            getUserInfo()
         })
     })
 })();
 
 //  如果已經改過資料 將資料填入input裡
-(function getUserInfo() {
+function getUserInfo() {
     fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
         method: "POST",
         headers: {
@@ -40,9 +40,10 @@ var music = '';
             birthday = result.birthday
             relationship = result.relationship
             music = result.music
+            console.log(account);
         })
     })
-})()
+}
 
 //  第一次按下帳戶資訊時執行動畫 並更改頁面
 var temp = false
@@ -100,7 +101,7 @@ function goUserInfoFunc() {
         input4.type = 'text'
         input4.name = 'relationship'
         input4.placeholder = '請輸入感情狀態'
-        input4.value = emotional
+        input4.value = relationship
         var p5 = document.createElement('p')
         p5.innerHTML = "音樂"
         var input5 = document.createElement('input')
@@ -158,7 +159,7 @@ function updateFunc() {
         response.json().then(result => {
             if (result.updateSucc) {   
                 //console.log(result.account);      
-                //window.location.href = 'mainPage.html'  //改到主頁面
+                window.location.href = 'mainPage.html'  //改到主頁面
             }
             else {
                 if (result.validSex) {                   

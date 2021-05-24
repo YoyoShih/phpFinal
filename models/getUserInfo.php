@@ -7,11 +7,17 @@ $_POST = json_decode($rest_json, true);
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
-$username = $_POST["account"];
+$username = $_POST['account'];
+//$username = "aa";
 $sql = "SELECT * FROM user_info WHERE username = '$username'";
-$username_result = mysqli_query($conn, $username_sql);
-$row = mysqli_fetch_assoc($result);
-echo json_encode([      
+$username_result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($username_result);
+echo json_encode([ 
+    // "nickname" => $username,
+    // "sex" => "bb",
+    // "birthday" => "2010-03-04",
+    // "relationship" => "cc",
+    // "music" => "dd"     
     "nickname" => $row['nickname'],
     "sex" => $row['sex'],
     "birthday" => $row['birthday'],
