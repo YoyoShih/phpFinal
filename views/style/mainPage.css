@@ -31,6 +31,15 @@
   background: none;
 }
 
+.logout {
+  cursor: pointer;
+  height: 4vw;
+  left: 8vw;
+  position: fixed;
+  top: 83vh;
+  width: 4vw;
+}
+
 .middle-main {
   display: flex;
   flex-direction: column;
