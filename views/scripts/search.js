@@ -34,7 +34,7 @@ var account = '1';
     }).then(response => {
         response.json().then(result => {
             account = result.account
-            console.log(account)
+            //console.log(account)
             searchPeople()
         })
     })
@@ -54,8 +54,11 @@ function searchPeople() {
     }).then(response => {
         response.json().then(result => {
             console.log(result.account1)
+            //console.log(result.nickname1)
             console.log(result.account2)
+            //console.log(result.nickname2)
             console.log(result.account3)
+            //console.log(result.nickname3)
         })
     })
 }
