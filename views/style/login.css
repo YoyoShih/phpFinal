@@ -12,26 +12,25 @@
 }
 
 .block {
-  background-color: white;
+  background-color: #000738;
   border-radius: 2vmax;
   box-shadow: 0px 0px 20px 1px black;
   height: 96vh;
   left: 35vw;
-  opacity: 0.6;
+  opacity: 0.8;
   position: fixed;
   top: 2vh;
   width: 30vw;
-  z-index: 1;
+  z-index: 2;
 }
 
-.logo {
-  background-color: black;
+.login-logo {
   height: 40vh;
   left: 40vw;
   position: fixed;
-  top: 12vh;
+  top: 8vh;
   width: 20vw;
-  z-index: 2;
+  z-index: 3;
 }
 
 .form {
@@ -41,39 +40,79 @@
   height: 40vh;
   left: 42vw;
   position: fixed;
-  top: 54vh;
+  top: 45vh;
   width: 16vw;
-  z-index: 2;
+  z-index: 3;
 }
 
 .form > p {
+  color: white;
   font-size: larger;
 }
 
-.login-btn {
-  cursor: pointer;
+.form > input {
+  background-color: black;
+  border: 0.3vh solid white;
+  border-radius: 2vw;
+  color: white;
+  opacity: 0.8;
   height: 4vh;
-  left: 46vw;
+  text-align: center;
+  width: 10vw;
+}
+
+.form > input:focus {
+  border: 0.4vh solid #00f9ff;
+  width: 15vw;
+}
+
+.login-btn {
+  background-color: black;
+  border-color: white;
+  border-radius: 1vw 0 0 1vw;
+  color: white;
+  cursor: pointer;
+  height: 5vh;
+  left: 45.1vw;
   position: fixed;
   text-align: center;
-  top: 82vh;
-  width: 3vw;
-  z-index: 2;
+  top: 78vh;
+  width: 5vw;
+  z-index: 4;
+}
+
+.login-btn:hover {
+  background-color: #5269ff;
+  color: white;
 }
 
 .register {
-  left: 50vw;
+  background-color: black;
+  border-color: white;
+  border-radius: 0 1vw 1vw 0;
+  color: white;
+  cursor: pointer;
+  height: 5vh;
+  left: 49.9vw;
   position: fixed;
-  top: 82vh;
-  z-index: 2;
+  text-align: center;
+  top: 78vh;
+  width: 5vw;
+  z-index: 4;
+}
+
+.register:hover {
+  background-color: #5269ff;
+  color: white;
 }
 
 .forget-password {
+  color: white;
   left: 48vw;
   position: fixed;
-  top: 90vh;
+  top: 86vh;
   width: 10vw;
-  z-index: 2;
+  z-index: 3;
 }
 
 .login-fail {
@@ -81,14 +120,49 @@
   left: 46vw;
   opacity: 0;
   position: fixed;
-  top: 76vh;
+  top: 71.5vh;
   width: 8vw;
-  z-index: 2;
+  z-index: 4;
+}
+
+.background-color {
+  animation: colorChange 20s linear 0s infinite normal forwards;
+  background-color: #8cbbff;
+  height: 100vh;
+  left: 0vw;
+  opacity: 0.2;
+  position: fixed;
+  top: 0vh;
+  width: 100vw;
+  z-index: 1;
 }
 
 .background {
-  opacity: 0.5;
   position: fixed;
   top: -15vh;
   width: 100vw;
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #8cbbff;
+  }
+  20% {
+    background-color: rgb(255, 140, 255);
+  }
+  40% {
+    background-color: #8cbbff;
+  }
+  60% {
+    background-color: rgb(88, 252, 102);
+  }
+  70% {
+    background-color: #8cbbff;
+  }
+  80% {
+    background-color: rgb(255, 252, 66);
+  }
+  100% {
+    background-color: #8cbbff;
+  }
 }
