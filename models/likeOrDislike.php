@@ -14,9 +14,7 @@ $object = $_POST['name'];
 updateData($username,$object,$like,$conn);
 
 function updateData($username,$object,$like,$conn){
-    echo json_encode([     
-        "account" => $username
-    ]);  
+    
 }
 
 }

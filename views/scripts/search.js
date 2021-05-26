@@ -111,7 +111,7 @@ function likeOrDislike(obj) {
     }).then(response => {
         response.json().then(result => {
             console.log(account);
-            //accountArr.push(result.account)
+            accountArr.push(result.account)
         })
     })
 }
