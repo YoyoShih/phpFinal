@@ -40,6 +40,9 @@ var account = '1';
     })
 })();
 
+var sticker = document.getElementsByClassName('main-block-sticker')[0]
+var name = document.getElementsByClassName('main-block-name')[0]
+var info = document.getElementsByClassName('main-block-info')[0]
 //  取的隨機三個人的資料 馬上執行
 function searchPeople() {
     fetch('http://localhost/final/phpFinal/models/search.php', {
