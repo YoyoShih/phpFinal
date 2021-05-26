@@ -1,22 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 .start {
-  height: 100vh;
-  left: 0;
+  color: white;
+  cursor: pointer;
+  font-size: xx-large;
+  font-family: "Permanent Marker", cursive;
+  height: 10vh;
+  left: 45vw;
   line-height: 100vh;
   position: fixed;
   text-align: center;
   top: 0;
+  width: 10vw;
+  z-index: 5;
+}
+
+.start-mask {
+  background-color: gray;
+  height: 100vh;
+  left: 0;
+  opacity: 0.95;
+  position: fixed;
+  top: 0;
   width: 100vw;
-  z-index: 3;
+  z-index: 4;
 }
 
 .main-block {
-  background-color: white;
-  height: 95vh;
+  align-items: center;
+  background: radial-gradient(ellipse at center, white, #c4cfff);
+  box-shadow: 0 0 5px 5px black;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
   left: 35vw;
+  padding-top: 10vh;
   position: fixed;
   top: 2.5vh;
   width: 30vw;
   z-index: 1;
+}
+
+.main-block-sticker {
+  background-color: white;
+  height: 40vh;
+  width: 20vw;
+  z-index: 1;
+}
+
+.main-block-name {
+  font-size: xx-large;
 }
 
 .background {
@@ -29,6 +62,8 @@
 }
 
 .like {
+  box-shadow: 0 0 3px 3px black;
+  border-radius: 99vw;
   cursor: pointer;
   height: 4vw;
   left: 67.5vw;
@@ -38,11 +73,22 @@
 }
 
 .dislike {
+  box-shadow: 0 0 3px 3px black;
+  border-radius: 99vw;
   cursor: pointer;
   height: 4vw;
   left: 28.5vw;
   position: fixed;
   top: 47vh;
+  z-index: 3;
+}
+
+.back {
+  bottom: 5vh;
+  cursor: pointer;
+  height: 3vw;
+  position: fixed;
+  right: 2vw;
   z-index: 3;
 }
 
