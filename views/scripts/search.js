@@ -34,6 +34,10 @@ var accountObj = [];
     }).then(response => {
         response.json().then(result => {
             account = result.account
+<<<<<<< HEAD
+            //console.log(account)
+=======
+>>>>>>> d318a4a1c2eabe055a8110cb1ad237e74ef8d951
             searchPeople()
         })
     })
@@ -53,8 +57,17 @@ function searchPeople() {
         })
     }).then(response => {
         response.json().then(result => {
+<<<<<<< HEAD
+            console.log(result.account1)
+            //console.log(result.nickname1)
+            console.log(result.account2)
+            //console.log(result.nickname2)
+            console.log(result.account3)
+            //console.log(result.nickname3)
+=======
             accountArr.push(result.account2, result.account3)
             accountObj = result.account1
+>>>>>>> d318a4a1c2eabe055a8110cb1ad237e74ef8d951
         })
     })
     // var test1 = ["87white", "87white", "cat", "123456789"]
