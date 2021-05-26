@@ -8,7 +8,6 @@ $_POST = json_decode($rest_json, true);
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
 $username = $_POST['account'];
-//$username = "aa";
 $sql = "SELECT * FROM user_info WHERE username = '$username'";
 $username_result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($username_result);
@@ -17,6 +16,7 @@ echo json_encode([
     "sex" => $row['sex'],
     "birthday" => $row['birthday'],
     "relationship" => $row['relationship'],
-    "music" => $row['musicGenre']
+    "music" => $row['musicGenre'],
+    "animal" => $row['animal']
 ]); 
 ?>
