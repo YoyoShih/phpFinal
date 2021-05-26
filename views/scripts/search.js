@@ -20,12 +20,12 @@ setTimeout(() => {
     right.remove()
 }, 2000);
 
-var account = '';
 var accountArr = []     // account, nickname, animal, info
 var accountObj = '';
-    
-(function getAccount() {
-    fetch('http://localhost/final/phpFinal/models/login_check.php', {
+
+//  取的隨機三個人的資料 馬上執行
+(function searchPeople() {
+    fetch('http://localhost/final/phpFinal/models/search.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -33,30 +33,11 @@ var accountObj = '';
         }
     }).then(response => {
         response.json().then(result => {
-            account = result.account
-            searchPeople()
-        })
-    })
-})();
-
-//  取的隨機三個人的資料 馬上執行
-function searchPeople() {
-    fetch('http://localhost/final/phpFinal/models/search.php', {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            account: account
-        })
-    }).then(response => {
-        response.json().then(result => {
             accountArr.push(result.account2, result.account3)
             accountObj = result.account1
         })
     })
-}
+})();
 
 var start_mask = document.getElementsByClassName('start-mask')[0]
 //  音檔撥放

@@ -2,7 +2,7 @@ function loginFunc() {
     const form = document.forms['login']
     const account = form.elements.account.value
     const password = form.elements.password.value
-    const text = document.getElementsByClassName('loginFail')[0]
+    const text = document.getElementsByClassName('login-fail')[0]
 
     if (!isValidPass(password)) {
         text.style.opacity = 1

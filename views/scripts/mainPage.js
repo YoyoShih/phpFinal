@@ -12,3 +12,7 @@ function logout() {
         }
     }).then(window.location.href = 'login.html')
 }
+
+function goSearch() {
+    window.location.href = 'search.html'
+}
