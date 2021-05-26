@@ -80,6 +80,12 @@ const accountName = document.getElementsByClassName('main-block-name')[0]
 const accountInfo = document.getElementsByClassName('main-block-info')[0]
 
 function audioPlay() {
+    var objName = accountObj[1]
+    var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
+    audioRef.getDownloadURL().then((url) => {
+        audio = new Audio(url)
+        audio.play()
+    })
     animal = accountObj[2]
     var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
     animalURL.getDownloadURL().then((url) => {
@@ -87,13 +93,6 @@ function audioPlay() {
     })
     accountName.innerHTML = accountObj[1]
     accountInfo.innerHTML = accountObj[3]
-
-    var objName = accountObj[1]
-    var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
-    audioRef.getDownloadURL().then((url) => {
-        audio = new Audio(url)
-        audio.play()
-    })
 }
 
 //  左滑或右滑後的判斷
