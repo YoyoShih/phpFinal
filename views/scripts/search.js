@@ -34,12 +34,13 @@ var account = '1';
     }).then(response => {
         response.json().then(result => {
             account = result.account
+            searchPeople()
         })
     })
 })();
 
 //  取的隨機三個人的資料 馬上執行
-(function searchPeople() {
+function searchPeople() {
     fetch('http://localhost/final/phpFinal/models/search.php', {
         method: "POST",
         headers: {
@@ -54,7 +55,7 @@ var account = '1';
             //拿到隨機三個人
         })
     })
-})()
+}
 
 //  音檔撥放
 function firstPlay(e) {

@@ -9,7 +9,7 @@
     <body>
         <div class="wrap">
             <div class="block"></div>
-            <img class="logo">
+            <img src="../src/logo.png" class="login-logo">
             <form name="login" class="form">
                 <p>帳號</p>
                 <input type="text" name="account" placeholder="請輸入帳號">
@@ -17,10 +17,11 @@
                 <input type="password" name="password" placeholder="請輸入密碼">
             </form>
             <button class="login-btn" onclick="loginFunc()">登入</button>
-            <u class="register" onclick="goRegisterFunc()">建立帳號</u>
+            <button class="register" onclick="goRegisterFunc()">建立帳號</button>
             <u class="forget-password" onclick="goForgetPassFunc()">忘記密碼</u>
             <p class="login-fail">帳號或密碼錯誤!</p>
             <img class="background" src="../src/login_background.png">
+            <div class="background-color"></div>
         </div>
         <script src="scripts/login.js"></script>
     </body>
