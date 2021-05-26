@@ -8,7 +8,6 @@ $_POST = json_decode($rest_json, true);
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 
 $username = $_POST['account'];
-//$username = "aa";
 $sql = "SELECT * FROM user_info WHERE username = '$username'";
 $username_result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($username_result);
