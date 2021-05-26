@@ -1,4 +1,3 @@
-//  firebase用來儲存音檔 下面是設定
 var firebaseConfig = {
     apiKey: "AIzaSyBKzDjs8rZ9huxr3hkUsyGWKFYJFqR8ls0",
     authDomain: "phpfinal-2a350.firebaseapp.com",
@@ -10,7 +9,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var storage = firebase.storage()
 
-//  2秒後將開頭動畫的元素刪除
 setTimeout(() => {
     var mask = document.getElementsByClassName('mask')[0]
     var logo = document.getElementsByClassName('logo')[0]
@@ -22,8 +20,7 @@ setTimeout(() => {
     right.remove()
 }, 2000);
 
-//  取得account的函數 進入頁面會馬上執行一次
-var account = '1';
+var account = '';
 (function getAccount() {
     fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
@@ -34,15 +31,14 @@ var account = '1';
     }).then(response => {
         response.json().then(result => {
             account = result.account
-            console.log(account)
             searchPeople()
         })
     })
 })();
 
-var sticker = document.getElementsByClassName('main-block-sticker')[0]
-var name = document.getElementsByClassName('main-block-name')[0]
-var info = document.getElementsByClassName('main-block-info')[0]
+var accountArr = []     // account, nickname, animal, info
+var accountObj = null
+
 //  取的隨機三個人的資料 馬上執行
 function searchPeople() {
     fetch('http://localhost/final/phpFinal/models/search.php', {
@@ -56,9 +52,8 @@ function searchPeople() {
         })
     }).then(response => {
         response.json().then(result => {
-            console.log(result.account1)
-            console.log(result.account2)
-            console.log(result.account3)
+            accountArr.push(result.account2, result.account3)
+            accountObj = result.account1
         })
     })
 }
@@ -66,13 +61,28 @@ function searchPeople() {
 var start_mask = document.getElementsByClassName('start-mask')[0]
 //  音檔撥放
 function firstPlay(e) {
+    audioPlay()
     e.remove()
     start_mask.remove()
-    audioPlay()
 }
 
+var animal = ''
+
+const accountSticker = document.getElementsByClassName('main-block-sticker')[0]
+const accountName = document.getElementsByClassName('main-block-name')[0]
+const accountInfo = document.getElementsByClassName('main-block-info')[0]
+
 function audioPlay() {
-    var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/'+account+'.mp3')
+    animal = accountObj[2]
+    var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
+    animalURL.getDownloadURL().then((url) => {
+        accountSticker.src = url
+    })
+    accountName.innerHTML = accountObj[1]
+    accountInfo.innerHTML = accountObj[3]
+
+    var objName = accountObj[1]
+    var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
     audioRef.getDownloadURL().then((url) => {
         var audio = new Audio(url)
         audio.play()
@@ -82,7 +92,8 @@ function audioPlay() {
 //  左滑或右滑後的判斷
 const like = document.getElementsByClassName('like')[0]
 function likeOrDislike(obj) {
-    //顯示下一個人和播放下一個人的音檔
+    accountObj = accountArr.shift()
+    audioPlay()
     fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
         method: "POST",
         headers: {
@@ -91,11 +102,11 @@ function likeOrDislike(obj) {
         },
         body: JSON.stringify({
             like: (obj === like),
-            name: ''
+            name: accountObj[0]
         })
     }).then(response => {
         response.json().then(result => {
-            //多拿到一個人
+            accountArr.push(result.account)
         })
     })
 }
