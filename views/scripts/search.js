@@ -21,6 +21,9 @@ setTimeout(() => {
 }, 2000);
 
 var account = '';
+var accountArr = []     // account, nickname, animal, info
+var accountObj = [];
+    
 (function getAccount() {
     fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
@@ -34,10 +37,8 @@ var account = '';
             searchPeople()
         })
     })
+    searchPeople()
 })();
-
-var accountArr = []     // account, nickname, animal, info
-var accountObj = null
 
 //  取的隨機三個人的資料 馬上執行
 function searchPeople() {
@@ -56,6 +57,11 @@ function searchPeople() {
             accountObj = result.account1
         })
     })
+    // var test1 = ["87white", "87white", "cat", "123456789"]
+    // var test2 = ["yoyo","yoyo","cow","1234567891235456789"]
+    // accountArr.push(test1, test2)
+    // var test3 = ["rick","rick","bird","987654321654987654312"]
+    // accountObj = test3
 }
 
 var start_mask = document.getElementsByClassName('start-mask')[0]
@@ -67,6 +73,7 @@ function firstPlay(e) {
 }
 
 var animal = ''
+var audio = ''
 
 const accountSticker = document.getElementsByClassName('main-block-sticker')[0]
 const accountName = document.getElementsByClassName('main-block-name')[0]
@@ -84,7 +91,7 @@ function audioPlay() {
     var objName = accountObj[1]
     var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
     audioRef.getDownloadURL().then((url) => {
-        var audio = new Audio(url)
+        audio = new Audio(url)
         audio.play()
     })
 }
@@ -92,6 +99,7 @@ function audioPlay() {
 //  左滑或右滑後的判斷
 const like = document.getElementsByClassName('like')[0]
 function likeOrDislike(obj) {
+    audio.pause()
     accountObj = accountArr.shift()
     audioPlay()
     fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
