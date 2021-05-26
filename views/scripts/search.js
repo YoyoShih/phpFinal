@@ -22,7 +22,7 @@ setTimeout(() => {
 
 var account = '';
 var accountArr = []     // account, nickname, animal, info
-var accountObj = [];
+var accountObj = '';
     
 (function getAccount() {
     fetch('http://localhost/final/phpFinal/models/login_check.php', {
@@ -34,14 +34,9 @@ var accountObj = [];
     }).then(response => {
         response.json().then(result => {
             account = result.account
-<<<<<<< HEAD
-            //console.log(account)
-=======
->>>>>>> d318a4a1c2eabe055a8110cb1ad237e74ef8d951
             searchPeople()
         })
     })
-    searchPeople()
 })();
 
 //  取的隨機三個人的資料 馬上執行
@@ -57,24 +52,10 @@ function searchPeople() {
         })
     }).then(response => {
         response.json().then(result => {
-<<<<<<< HEAD
-            console.log(result.account1)
-            //console.log(result.nickname1)
-            console.log(result.account2)
-            //console.log(result.nickname2)
-            console.log(result.account3)
-            //console.log(result.nickname3)
-=======
             accountArr.push(result.account2, result.account3)
             accountObj = result.account1
->>>>>>> d318a4a1c2eabe055a8110cb1ad237e74ef8d951
         })
     })
-    // var test1 = ["87white", "87white", "cat", "123456789"]
-    // var test2 = ["yoyo","yoyo","cow","1234567891235456789"]
-    // accountArr.push(test1, test2)
-    // var test3 = ["rick","rick","bird","987654321654987654312"]
-    // accountObj = test3
 }
 
 var start_mask = document.getElementsByClassName('start-mask')[0]
@@ -93,19 +74,19 @@ const accountName = document.getElementsByClassName('main-block-name')[0]
 const accountInfo = document.getElementsByClassName('main-block-info')[0]
 
 function audioPlay() {
-    var objName = accountObj[1]
+    var objName = accountObj.nickname
     var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
     audioRef.getDownloadURL().then((url) => {
         audio = new Audio(url)
         audio.play()
     })
-    animal = accountObj[2]
+    animal = accountObj.animal
     var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
     animalURL.getDownloadURL().then((url) => {
         accountSticker.src = url
     })
-    accountName.innerHTML = accountObj[1]
-    accountInfo.innerHTML = accountObj[3]
+    accountName.innerHTML = accountObj.nickname
+    accountInfo.innerHTML = accountObj.information
 }
 
 //  左滑或右滑後的判斷
@@ -122,7 +103,7 @@ function likeOrDislike(obj) {
         },
         body: JSON.stringify({
             like: (obj === like),
-            name: accountObj[0]
+            name: accountObj.account
         })
     }).then(response => {
         response.json().then(result => {
