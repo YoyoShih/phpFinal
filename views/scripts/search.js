@@ -33,9 +33,6 @@ var accountObj = '';
         }
     }).then(response => {
         response.json().then(result => {
-            console.log(result.account1)
-            console.log(result.account2)
-            console.log(result.account3)
             accountArr.push(result.account2, result.account3)
             accountObj = result.account1
         })
