@@ -55,7 +55,7 @@ const accountName = document.getElementsByClassName('main-block-name')[0]
 const accountInfo = document.getElementsByClassName('main-block-info')[0]
 
 function audioPlay() {
-    var objName = accountObj.nickname
+    var objName = accountObj.account
     var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
     audioRef.getDownloadURL().then((url) => {
         audio = new Audio(url)
