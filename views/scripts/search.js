@@ -73,9 +73,6 @@ function audioPlay() {
 //  左滑或右滑後的判斷
 const like = document.getElementsByClassName('like')[0]
 function likeOrDislike(obj) {
-    audio.pause()
-    accountObj = accountArr.shift()
-    audioPlay()
     fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
         method: "POST",
         headers: {
@@ -88,8 +85,10 @@ function likeOrDislike(obj) {
         })
     }).then(response => {
         response.json().then(result => {
-            console.log(account);
-            //accountArr.push(result.account)
+            audio.pause()
+            accountObj = accountArr.shift()
+            audioPlay()
+            accountArr.push(result.account)
         })
     })
 }
