@@ -1,9 +1,31 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBKzDjs8rZ9huxr3hkUsyGWKFYJFqR8ls0",
+    authDomain: "phpfinal-2a350.firebaseapp.com",
+    projectId: "phpfinal-2a350",
+    storageBucket: "phpfinal-2a350.appspot.com",
+    messagingSenderId: "158655882955",
+    appId: "1:158655882955:web:ae4ac58b858a1167d75d4e"
+};
+firebase.initializeApp(firebaseConfig);
+var storage = firebase.storage()
+
 var account = '';
 var nickname = '';
 var sex = '';
 var birthday = '';
 var relationship = '';
 var music = '';
+var animal = '';
+
+const profile_name = document.getElementsByClassName('profile-info-name')[0]
+const profile_nickname = document.getElementsByClassName('profile-info-nickname')[0]
+const profile_sex = document.getElementsByClassName('profile-info-sex')[0]
+const profile_birthday = document.getElementsByClassName('profile-info-birthday')[0]
+const profile_relationship = document.getElementsByClassName('profile-info-relationship')[0]
+const profile_music = document.getElementsByClassName('profile-info-music')[0]
+const profile_sticker = document.getElementsByClassName('profile-sticker')[0]
+const top_block_sticker = document.getElementsByClassName('middle-main-top-block-sticker')[0]
+const top_block_name = document.getElementsByClassName('middle-main-top-block-name')[0];
 
 //  取得account的函數 進入頁面會馬上執行一次
 (function getAccount() {
@@ -16,7 +38,8 @@ var music = '';
     }).then(response => {
         response.json().then(result => {
             account = result.account
-            console.log(account)
+            profile_name.innerHTML = account
+            top_block_name.innerHTML = account
             getUserInfo()
         })
     })
@@ -35,12 +58,22 @@ function getUserInfo() {
         })
     }).then(response => {
         response.json().then(result => {
+            animal = result.animal
+            var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
+            animalURL.getDownloadURL().then((url) => {
+                profile_sticker.src = url
+                top_block_sticker.src = url
+            })
             nickname = result.nickname
+            profile_nickname.innerHTML = 'Nickname: ' + nickname
             sex = result.sex
+            profile_sex.innerHTML = 'Sex: ' + sex
             birthday = result.birthday
+            profile_birthday.innerHTML = 'Birthday: ' + birthday
             relationship = result.relationship
+            profile_relationship.innerHTML = 'Relationship: ' + relationship
             music = result.music
-            console.log(account);
+            profile_music.innerHTML = 'Music: ' + music
         })
     })
 }
