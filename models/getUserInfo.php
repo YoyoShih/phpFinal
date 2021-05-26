@@ -12,12 +12,7 @@ $username = $_POST['account'];
 $sql = "SELECT * FROM user_info WHERE username = '$username'";
 $username_result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($username_result);
-echo json_encode([ 
-    // "nickname" => $username,
-    // "sex" => "bb",
-    // "birthday" => "2010-03-04",
-    // "relationship" => "cc",
-    // "music" => "dd"     
+echo json_encode([    
     "nickname" => $row['nickname'],
     "sex" => $row['sex'],
     "birthday" => $row['birthday'],

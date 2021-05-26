@@ -25,7 +25,7 @@ setTimeout(() => {
 //  取得account的函數 進入頁面會馬上執行一次
 var account = '1';
 (function getAccount() {
-    fetch('http://localhost/final/phpFinal/models/user_information.php', {
+    fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -34,12 +34,14 @@ var account = '1';
     }).then(response => {
         response.json().then(result => {
             account = result.account
+            console.log(account)
+            searchPeople()
         })
     })
 })();
 
 //  取的隨機三個人的資料 馬上執行
-(function searchPeople() {
+function searchPeople() {
     fetch('http://localhost/final/phpFinal/models/search.php', {
         method: "POST",
         headers: {
@@ -51,10 +53,12 @@ var account = '1';
         })
     }).then(response => {
         response.json().then(result => {
-            //拿到隨機三個人
+            console.log(result.account1)
+            console.log(result.account2)
+            console.log(result.account3)
         })
     })
-})()
+}
 
 //  音檔撥放
 function firstPlay(e) {

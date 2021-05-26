@@ -16,7 +16,7 @@ var music = '';
     }).then(response => {
         response.json().then(result => {
             account = result.account
-            console.log(account);
+            console.log(account)
             getUserInfo()
         })
     })
