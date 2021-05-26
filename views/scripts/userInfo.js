@@ -92,7 +92,9 @@ function goUserInfoFunc() {
     setTimeout(() => {
         const right = document.getElementsByClassName('right-link')[0]
         right.remove()
-    },300)
+        const top = document.getElementsByClassName('middle-main-top')[0]
+        top.remove()
+    },250)
 
     setTimeout(() => {
         const middle = document.getElementsByClassName('middle-main')[0]

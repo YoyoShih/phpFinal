@@ -22,7 +22,7 @@ setTimeout(() => {
 
 var account = '';
 var accountArr = []     // account, nickname, animal, info
-var accountObj = [];
+var accountObj = '';
     
 (function getAccount() {
     fetch('http://localhost/final/phpFinal/models/login_check.php', {
@@ -59,11 +59,6 @@ function searchPeople() {
             accountObj = result.account1
         })
     })
-    // var test1 = ["87white", "87white", "cat", "123456789"]
-    // var test2 = ["yoyo","yoyo","cow","1234567891235456789"]
-    // accountArr.push(test1, test2)
-    // var test3 = ["rick","rick","bird","987654321654987654312"]
-    // accountObj = test3
 }
 
 var start_mask = document.getElementsByClassName('start-mask')[0]
@@ -82,20 +77,19 @@ const accountName = document.getElementsByClassName('main-block-name')[0]
 const accountInfo = document.getElementsByClassName('main-block-info')[0]
 
 function audioPlay() {
-    animal = accountObj[2]
-    var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
-    animalURL.getDownloadURL().then((url) => {
-        accountSticker.src = url
-    })
-    accountName.innerHTML = accountObj[1]
-    accountInfo.innerHTML = accountObj[3]
-
-    var objName = accountObj[1]
+    var objName = accountObj.nickname
     var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
     audioRef.getDownloadURL().then((url) => {
         audio = new Audio(url)
         audio.play()
     })
+    animal = accountObj.animal
+    var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
+    animalURL.getDownloadURL().then((url) => {
+        accountSticker.src = url
+    })
+    accountName.innerHTML = accountObj.nickname
+    accountInfo.innerHTML = accountObj.information
 }
 
 //  左滑或右滑後的判斷
@@ -112,7 +106,7 @@ function likeOrDislike(obj) {
         },
         body: JSON.stringify({
             like: (obj === like),
-            name: accountObj[0]
+            name: accountObj.account
         })
     }).then(response => {
         response.json().then(result => {

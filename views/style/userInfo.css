@@ -31,9 +31,16 @@
 }
 
 .update-btn {
-  height: 7vh;
-  margin-top: 5vh;
-  width: 3vw;
+  border-radius: 1vh;
+  cursor: pointer;
+  height: 15vh;
+  margin-top: 4vh;
+  width: 4vw;
+}
+
+.update-btn:hover {
+  background-color: #5269ff;
+  color: white;
 }
 
 .form > p {
@@ -41,7 +48,11 @@
 }
 
 .form > input {
+  border-radius: 1vh;
+  height: 3vh;
+  text-align: center;
   margin-top: 1vh;
+  width: 10vw;
 }
 
 .background {
