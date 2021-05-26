@@ -1,12 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 .start {
-  height: 100vh;
-  left: 0;
+  cursor: pointer;
+  font-size: xx-large;
+  font-family: "Permanent Marker", cursive;
+  height: 10vh;
+  left: 45vw;
   line-height: 100vh;
   position: fixed;
   text-align: center;
   top: 0;
+  width: 10vw;
+  z-index: 5;
+}
+
+.start-mask {
+  background-color: gray;
+  height: 100vh;
+  left: 0;
+  opacity: 0.7;
+  position: fixed;
+  top: 0;
   width: 100vw;
-  z-index: 3;
+  z-index: 4;
 }
 
 .main-block {
@@ -43,6 +59,15 @@
   left: 28.5vw;
   position: fixed;
   top: 47vh;
+  z-index: 3;
+}
+
+.back {
+  bottom: 5vh;
+  cursor: pointer;
+  height: 3vw;
+  position: fixed;
+  right: 2vw;
   z-index: 3;
 }
 

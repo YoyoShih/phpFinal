@@ -60,9 +60,11 @@ function searchPeople() {
     })
 }
 
+var start_mask = document.getElementsByClassName('start-mask')[0]
 //  音檔撥放
 function firstPlay(e) {
     e.remove()
+    start_mask.remove()
     audioPlay()
 }
 
@@ -93,4 +95,8 @@ function likeOrDislike(obj) {
             //多拿到一個人
         })
     })
+}
+
+function goBack() {
+    window.location.href = 'mainPage.html'
 }
