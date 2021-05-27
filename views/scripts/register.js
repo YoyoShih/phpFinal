@@ -1,3 +1,16 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBKzDjs8rZ9huxr3hkUsyGWKFYJFqR8ls0",
+    authDomain: "phpfinal-2a350.firebaseapp.com",
+    projectId: "phpfinal-2a350",
+    storageBucket: "phpfinal-2a350.appspot.com",
+    messagingSenderId: "158655882955",
+    appId: "1:158655882955:web:ae4ac58b858a1167d75d4e"
+};
+firebase.initializeApp(firebaseConfig);
+var storage = firebase.storage()
+
+var account = ''
+
 const form = document.forms['register']
 const accountInput = form.elements.account
 const passwordtInput = form.elements.password
@@ -56,7 +69,8 @@ emailInput.onblur = function () {
 }
 
 function registerFunc() {
-    const account = accountInput.value
+    registerSecond()
+    account = accountInput.value
     const password = passwordtInput.value
     const passwordCheck = passwordCheckInput.value
     const email = emailInput.value
@@ -89,7 +103,7 @@ function registerFunc() {
         }).then(response => {
             response.json().then(result => {
                 if (result.regSucc) {     
-                    window.location.href = 'login.html'  //改到登入畫面
+                    registerSecond()
                 }
                 else {
                     if (result.accountError) {
@@ -120,4 +134,67 @@ function isValidPassCheck(password,passwordCheck) {
 function isValidEmail(email){
     var str = /@/
     return str.test(email)
+}
+
+var animals = [
+    'bird',
+    'cat',
+    'chicken',
+    'cow',
+    'elephant',
+    'frog',
+    'giraffe',
+    'koala',
+    'mouse',
+]
+const len = animals.length
+
+function registerSecond() {
+    const wrap = document.getElementsByClassName('wrap')[0]
+    const middleMain = document.getElementsByClassName('middle-main')[0]
+    middleMain.remove()
+    const title = document.createElement('h1')
+    title.className = 'title'
+    title.innerHTML = '選擇您的動物頭貼吧!'
+    const animalWrap = document.createElement('div')
+    animalWrap.className = 'animals'
+    wrap.append(title, animalWrap)
+    const block = document.getElementsByClassName('animals')[0]
+    for (var i = 0; i < len; i++){
+        const animalImg = document.createElement('img')
+        const animal = animals.shift()
+        const animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
+        animalURL.getDownloadURL().then((url) => {
+            animalImg.src = url
+        })
+        animalImg.className = 'animal'
+        block.append(animalImg)
+        animalImg.onclick = () => {
+            register(animal)
+        }
+    }
+}
+
+
+function register(animal) {
+    fetch('http://localhost/final/phpFinal/models/registration_check.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            account: account,
+            animal: animal
+        })
+    }).then(response => {
+        response.json().then(result => {
+            if (result.regSucc) {     
+                window.location.href = 'login.html'
+            }
+            else {
+                
+            }
+        })
+    })
 }

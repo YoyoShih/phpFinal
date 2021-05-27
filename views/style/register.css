@@ -13,6 +13,42 @@
   }
 }
 
+.title {
+  color: white;
+  left: 40vw;
+  position: fixed;
+  top: 5vh;
+  width: 20vw;
+  z-index: 2;
+}
+
+.animals {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  left: 25vw;
+  position: fixed;
+  top: 20vh;
+  width: 50vw;
+  z-index: 3;
+}
+
+.animal {
+  background-color: white;
+  box-shadow: 0 0 0.5vh 0.5vh black;
+  border-radius: 2vh;
+  cursor: pointer;
+  height: 15vh;
+  margin-left: 1.2vw;
+  margin-bottom: 1.2vw;
+  opacity: 0.7;
+  width: 15vh;
+}
+
+.animal:hover {
+  border: 0.5vh solid red;
+}
+
 .middle-main {
   align-items: left;
   display: flex;
@@ -21,7 +57,7 @@
   left: 30vw;
   position: fixed;
   padding: 10vw;
-  padding-top: 2vw;
+  padding-top: 1vw;
   width: 20vw;
   z-index: 2;
 }
@@ -33,12 +69,12 @@
 
 .form {
   padding-left: 3vw;
+  transform: translateY(-5vh);
 }
 
 .form > p {
   color: white;
   font-size: x-large;
-  transform: translateY(-4vh);
 }
 
 .form > input {
@@ -48,14 +84,16 @@
   color: white;
   font-size: medium;
   height: 4vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   text-align: center;
-  transform: translate(0vw, -4vh);
+  transform: translateX(0vw);
   width: 16vw;
 }
 
 .form > input:focus {
   border: 0.4vh solid #00f9ff;
-  transform: translate(-2vw, -4vh);
+  transform: translateX(-2vw);
   width: 20vw;
 }
 
@@ -67,6 +105,7 @@
   cursor: pointer;
   height: 6vh;
   margin-left: 7.5vw;
+  transform: translateY(-3vh);
   width: 8vw;
 }
 
