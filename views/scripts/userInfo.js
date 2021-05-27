@@ -15,7 +15,24 @@ var sex = '';
 var birthday = '';
 var relationship = '';
 var music = '';
+var info = '';
 var animal = '';
+
+var animals = [
+    'bird',
+    'cat',
+    'chicken',
+    'cow',
+    'elephant',
+    'frog',
+    'giraffe',
+    'koala',
+    'mouse',
+]
+var animalsCopy = []
+const len = animals.length
+for (var i = 0; i < len;i++) animalsCopy.push(animals[i])
+var animalSelect = 0
 
 const profile_name = document.getElementsByClassName('profile-info-name')[0]
 const profile_nickname = document.getElementsByClassName('profile-info-nickname')[0]
@@ -74,6 +91,9 @@ function getUserInfo() {
             profile_relationship.innerHTML = 'Relationship: ' + relationship
             music = result.music
             profile_music.innerHTML = 'Music: ' + music
+            info = result.info
+            animal = result.animal
+            animalSelect = animals.indexOf(animal)
         })
     })
 }
@@ -104,11 +124,14 @@ function goUserInfoFunc() {
     setTimeout(() => {
         var userInfoBelow = document.createElement('div')
         userInfoBelow.className = 'userInfo-below'
+
+        var h2 = document.createElement('h2')
+        h2.innerHTML = "帳戶資訊"
+
         var form = document.createElement('form')
         form.className = 'form'
         form.name = 'update'
-        var h2 = document.createElement('h2')
-        h2.innerHTML = "帳戶資訊"
+
         var p1 = document.createElement('p')
         p1.innerHTML = "暱稱"
         var input1 = document.createElement('input')
@@ -144,12 +167,44 @@ function goUserInfoFunc() {
         input5.name = 'music'
         input5.placeholder = '請輸入音樂類型'
         input5.value = music
-        form.append(h2, p1, input1, p2, input2, p3, input3, p4, input4, p5, input5)
+        var p6 = document.createElement('p')
+        p6.innerHTML = "簡介"
+        var input6 = document.createElement('textarea')
+        input6.name = 'info'
+        input6.placeholder = '請輸入簡介'
+        input6.value = info
+        var p7 = document.createElement('p')
+        p7.innerHTML = "動物"
+
+        var animalWrap = document.createElement('div')
+        animalWrap.className = 'animals'
+        for (var i = 0; i < len; i++){
+            const animalImg = document.createElement('img')
+            const animal = animalsCopy.shift()
+            const animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
+            animalURL.getDownloadURL().then((url) => {
+                animalImg.src = url
+            })
+            animalImg.className = 'animal'
+            if(i == animalSelect) animalImg.classList.add('animal-selected')
+            animalWrap.append(animalImg)
+            animalImg.onclick = () => {
+                var target = document.getElementsByClassName('animal')[animalSelect]
+                target.classList.remove('animal-selected')
+                animalSelect = animals.indexOf(animal)
+                target = document.getElementsByClassName('animal')[animalSelect]
+                target.classList.add('animal-selected')
+            }
+        }
+
+        form.append(p1, p2, input1, input2, p3, p4,input3,  input4, p5, p6, input5, input6, p7, animalWrap)
         var btn = document.createElement('button')
         btn.className = 'update-btn'
         btn.innerHTML = "更新"
-        btn.addEventListener('click',updateFunc)
-        userInfoBelow.append(form,btn)
+        btn.addEventListener('click', updateFunc)
+        
+        userInfoBelow.append(h2,form, btn)
+        
         wrap.append(userInfoBelow)
 
         var img = document.createElement('img')
@@ -176,6 +231,7 @@ function updateFunc() {
     const birthday = form.elements.birthday.value   //YYYY-MM-DD出生日期
     const relationship = form.elements.relationship.value   //感情狀態
     const music = form.elements.music.value        //喜歡音樂類型
+    const info = form.elements.info.value
     fetch('http://localhost/final/phpFinal/models/user_information.php', {
         method: "POST",
         headers: {
@@ -188,7 +244,9 @@ function updateFunc() {
             sex: sex,
             birthday: birthday,
             relationship: relationship,
-            music: music
+            music: music,
+            info: info,
+            animal: animals[animalSelect]
         })
     }).then(response => {
         response.json().then(result => {

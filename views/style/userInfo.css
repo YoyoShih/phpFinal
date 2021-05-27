@@ -24,7 +24,7 @@
   height: 12vh;
   left: 20vw;
   position: fixed;
-  top: 10vh;
+  top: 5vh;
   transform: translateX(15%);
   width: 80vw;
   z-index: 3;
@@ -34,7 +34,8 @@
   border-radius: 1vh;
   cursor: pointer;
   height: 15vh;
-  margin-top: 4vh;
+  margin-left: 16vw;
+  margin-top: 5vh;
   width: 4vw;
 }
 
@@ -43,7 +44,15 @@
   color: white;
 }
 
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.5vw;
+  margin-left: 16vw;
+}
+
 .form > p {
+  text-align: center;
   margin-top: 3vh;
 }
 
@@ -53,6 +62,44 @@
   text-align: center;
   margin-top: 1vh;
   width: 10vw;
+}
+
+.form > textarea {
+  border-radius: 1vh;
+  height: 9vh;
+  text-align: center;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  width: 10vw;
+}
+
+.animals {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 10vw;
+}
+
+.animal {
+  background-color: white;
+  border-radius: 1vh;
+  cursor: pointer;
+  height: 4vh;
+  margin-left: 1.2vh;
+  margin-bottom: 1.2vh;
+  width: 4vh;
+}
+
+.animal:hover {
+  height: 3.6vh;
+  border: 0.2vh solid red;
+  width: 3.6vh;
+}
+
+.animal-selected {
+  height: 3.6vh;
+  border: 0.2vh solid red;
+  width: 3.6vh;
 }
 
 .background {
