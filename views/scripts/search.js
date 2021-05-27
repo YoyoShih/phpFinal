@@ -89,6 +89,7 @@ function likeOrDislike(obj) {
             accountObj = accountArr.shift()
             audioPlay()
             accountArr.push(result.account)
+            //console.log(result.account)
         })
     })
 }
