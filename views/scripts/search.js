@@ -72,26 +72,39 @@ function audioPlay() {
 
 //  左滑或右滑後的判斷
 const like = document.getElementsByClassName('like')[0]
+var last = true
+
 function likeOrDislike(obj) {
-    fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            like: (obj === like),
-            name: accountObj.account
+    if (!last) {
+        fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                like: (obj === like),
+                name: accountObj.account
+            })
+        }).then(response => {
+            response.json().then(result => {
+                audio.pause()
+                accountObj = accountArr.shift()
+                audioPlay()
+                if (!result.account.account) accountArr.push(result.account)
+                else last = true
+            })
         })
-    }).then(response => {
-        response.json().then(result => {
-            audio.pause()
-            accountObj = accountArr.shift()
-            audioPlay()
-            accountArr.push(result.account)
-            //console.log(result.account)
+    }
+    else {
+        swal({
+            title: "哇!沒人了!",
+            text: "您已經探索完所有的用戶，按下方按鈕以回去主頁面",
+            icon: "warning"
+        }).then(() => {
+            goBack()
         })
-    })
+    }
 }
 
 function goBack() {
