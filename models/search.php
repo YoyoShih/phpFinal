@@ -33,13 +33,17 @@ function getData($username,$conn){
         $user_array["account$i"]['nickname'] = $row['nickname'];  
         $user_array["account$i"]['animal'] = $row['animal']; 
         $user_array["account$i"]['information'] = $row['information'];
-        $_SESSION["account$i"] = $row['username'];
+        //$_SESSION["account$i"] = $row['username'];
+        $acc = $row['username'];
+        $sql = "INSERT INTO search_info (subject,object) VALUES ('$username','$acc')";
+        $result = mysqli_query($conn,$sql);
     }
     echo json_encode( 
         $user_array        
     ); 
-    // echo $_SESSION["account2"];
-    // echo $_SESSION["account3"];
-    // echo "aaa";
-}
+//     echo $_SESSION["account1"];
+//     echo $_SESSION["account2"];
+//     echo $_SESSION["account3"];
+//     echo "aaa";
+ }
 ?>
