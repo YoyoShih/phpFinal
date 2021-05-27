@@ -72,39 +72,43 @@ function audioPlay() {
 
 //  左滑或右滑後的判斷
 const like = document.getElementsByClassName('like')[0]
-var last = true
+var last = false
+var count = 2
 
 function likeOrDislike(obj) {
-    if (!last) {
-        fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                like: (obj === like),
-                name: accountObj.account
-            })
-        }).then(response => {
-            response.json().then(result => {
+    fetch('http://localhost/final/phpFinal/models/likeOrDislike.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            like: (obj === like),
+            name: accountObj.account
+        })
+    }).then(response => {
+        response.json().then(result => {
+            if(!last){
                 audio.pause()
                 accountObj = accountArr.shift()
                 audioPlay()
-                if (!result.account.account) accountArr.push(result.account)
-                else last = true
-            })
+                if (result.account.account) accountArr.push(result.account)
+                else{
+                    count--
+                    if(count == 0) last = true
+                }
+            }
+            else{
+                swal({
+                    title: "哇!沒人了!",
+                    text: "您已經探索完所有的用戶，按下方按鈕以回去主頁面",
+                    icon: "warning"
+                }).then(() => {
+                    goBack()
+                })
+            }
         })
-    }
-    else {
-        swal({
-            title: "哇!沒人了!",
-            text: "您已經探索完所有的用戶，按下方按鈕以回去主頁面",
-            icon: "warning"
-        }).then(() => {
-            goBack()
-        })
-    }
+    })
 }
 
 function goBack() {
