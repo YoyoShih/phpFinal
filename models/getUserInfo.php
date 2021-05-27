@@ -17,6 +17,7 @@ echo json_encode([
     "birthday" => $row['birthday'],
     "relationship" => $row['relationship'],
     "music" => $row['musicGenre'],
-    "animal" => $row['animal']
+    "animal" => $row['animal'],
+    "info" => $row['information']
 ]); 
 ?>
