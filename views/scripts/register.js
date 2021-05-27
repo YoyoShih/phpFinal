@@ -177,7 +177,7 @@ function registerSecond() {
 
 
 function register(animal) {
-    fetch('http://localhost/final/phpFinal/models/registration_check.php', {
+    fetch('http://localhost/final/phpFinal/models/registration_animal.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',
