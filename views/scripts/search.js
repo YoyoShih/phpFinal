@@ -54,20 +54,21 @@ const accountSticker = document.getElementsByClassName('main-block-sticker')[0]
 const accountName = document.getElementsByClassName('main-block-name')[0]
 const accountInfo = document.getElementsByClassName('main-block-info')[0]
 
-function audioPlay() {
+async function audioPlay() {
+    animal = accountObj.animal
+    var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
+    await animalURL.getDownloadURL().then((url) => {
+        accountSticker.src = url
+        accountName.innerHTML = accountObj.nickname
+        accountInfo.innerHTML = accountObj.information
+    })
     var objName = accountObj.account
     var audioRef = storage.refFromURL('gs://phpfinal-2a350.appspot.com/audio/'+objName+'.mp3')
-    audioRef.getDownloadURL().then((url) => {
+    await audioRef.getDownloadURL().then((url) => {
         audio = new Audio(url)
         audio.play()
     })
-    animal = accountObj.animal
-    var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
-    animalURL.getDownloadURL().then((url) => {
-        accountSticker.src = url
-    })
-    accountName.innerHTML = accountObj.nickname
-    accountInfo.innerHTML = accountObj.information
+    
 }
 
 //  左滑或右滑後的判斷

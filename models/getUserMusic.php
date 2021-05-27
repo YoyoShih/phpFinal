@@ -14,10 +14,12 @@ $sql = "SELECT s.song_name, s.singer, s.song_Genre
         FROM song_info as s, music_gamn as m
         WHERE m.username = '$username' AND m.song_id = s.song_id";
 $result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($result);
-echo json_encode([    
-    "name" => $row['song_name'],
-    "singer" => $row['singer'],  
-    "music_genre" => $row['music_genre']    
-]); 
+for($i=1;$row = mysqli_fetch_assoc($result);$i++){     
+    $music_array[$i]['songName'] = $row['song_name'];  
+    $music_array[$i]['produce'] = $row['singer'];  
+    $music_array[$i]['genre'] = $row['song_Genre']; 
+}
+echo json_encode(   
+    $music_array   
+); 
 ?>

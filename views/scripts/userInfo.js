@@ -125,7 +125,7 @@ function goUserInfoFunc() {
         middle.remove()
     },400)
     
-    setTimeout(() => {
+    setTimeout(async () => {
         var userInfoBelow = document.createElement('div')
         userInfoBelow.className = 'userInfo-below'
 
@@ -186,7 +186,7 @@ function goUserInfoFunc() {
             const animalImg = document.createElement('img')
             const animal = animalsCopy.shift()
             const animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+animal+'.png')
-            animalURL.getDownloadURL().then((url) => {
+            await animalURL.getDownloadURL().then((url) => {
                 animalImg.src = url
             })
             animalImg.className = 'animal'
