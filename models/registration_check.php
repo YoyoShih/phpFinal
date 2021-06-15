@@ -22,22 +22,24 @@ function insertData($email,$username,$password,$conn){
             "emailError" => true
         ]);        
     }
-    else if(mysqli_num_rows($username_result) > 0) {
-        echo json_encode([   
-            "accountError" => true
-        ]);        
-    }
     else{
-        $info_sql = "INSERT INTO user_info (username) VALUES ('$username')";
-        $info_result = mysqli_query($conn, $info_sql);
-        $account_sql = "INSERT INTO user_account (email, username, password)
-        VALUES ('$email', '$username', '$password')";
-        $account_result = mysqli_query($conn, $account_sql);
-        if ($account_result&&$info_result) {
+        if(mysqli_num_rows($username_result) > 0) {
             echo json_encode([   
-                "regSucc" => true
-            ]);
-        } 
-    }
+                "accountError" => true
+            ]);        
+        }
+        else{
+            $info_sql = "INSERT INTO user_info (username) VALUES ('$username')";
+            $info_result = mysqli_query($conn, $info_sql);
+            $account_sql = "INSERT INTO user_account (email, username, password)
+            VALUES ('$email', '$username', '$password')";
+            $account_result = mysqli_query($conn, $account_sql);
+            if ($account_result&&$info_result) {
+                echo json_encode([   
+                    "regSucc" => true
+                ]);
+            } 
+        }
+    } 
 }
 ?>

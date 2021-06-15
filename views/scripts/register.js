@@ -69,7 +69,7 @@ emailInput.onblur = function () {
 }
 
 function registerFunc() {
-    registerSecond()
+    //registerSecond()
     account = accountInput.value
     const password = passwordtInput.value
     const passwordCheck = passwordCheckInput.value
