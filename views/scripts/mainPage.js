@@ -18,22 +18,7 @@ setTimeout(() => {
     mask.remove()
 }, 2000)
 
-function logout() {
-    fetch('http://localhost/final/phpFinal/models/logout.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }).then(window.location.href = 'login.html')
-}
-
-function goSearch() {
-    window.location.href = 'search.html'
-}
-
 const musicBlocks = document.getElementsByClassName('music-blocks')[0];
-
 (async function getMusic() {
     var musics = []
     const response = await fetch('http://localhost/final/phpFinal/models/getUserMusic.php', {
@@ -82,3 +67,21 @@ const musicBlocks = document.getElementsByClassName('music-blocks')[0];
         count++
     }
 })()
+
+function logout() {
+    fetch('http://localhost/final/phpFinal/models/logout.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(window.location.href = 'login.html')
+}
+
+function goSearch() {
+    window.location.href = 'search.html'
+}
+
+function goFB() {
+    window.open('fb.html','test')
+}

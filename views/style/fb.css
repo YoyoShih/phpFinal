@@ -1,0 +1,37 @@
+.header-img {
+  border-radius: 1vw;
+  height: 9vh;
+  left: 0.5vh;
+  position: fixed;
+  top: 0.5vh;
+}
+
+.header {
+  background-color: #3b5997;
+  color: white;
+  font-size: large;
+  height: 10vh;
+  line-height: 10vh;
+  text-align: center;
+  width: 100vw;
+}
+
+.fb-logo {
+  height: 16vw;
+  left: 42vw;
+  position: fixed;
+  top: 20vh;
+}
+
+.wrap {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 45vh;
+  padding-top: 45vh;
+}
+
+.wrap > button {
+  margin-bottom: 1vh;
+  width: 10vw;
+}
