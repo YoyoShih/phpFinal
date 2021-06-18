@@ -69,23 +69,23 @@ const musicBlocks = document.getElementsByClassName('music-blocks')[0];
 })()
 
 function getFriends() {
-    var friends = []
-    const response = await fetch('http://localhost/final/phpFinal/models/getFriends.php', {
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    })
-    return friends = await response.json()
-    // return friends = [
-    //     { name: "Yoyo" },
-    //     { name: "Rick" },
-    //     { name: "Yoyo" },
-    //     { name: "Rick" },
-    //     { name: "Yoyo" },
-    //     { name: "Rick" }
-    // ]
+    // var friends = []
+    // const response = await fetch('http://localhost/final/phpFinal/models/getFriends.php', {
+    //     method: "GET",
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    //return friends = await response.json()
+    return friends = [
+        { name: "Yoyo" },
+        { name: "rick" },
+        { name: "amber" },
+        { name: "alex" },
+        { name: "dennnis" },
+        { name: "87white" }
+    ]
 }
 
 function logout() {
@@ -112,6 +112,7 @@ function goFB() {
     var friend = ''
     var count = "0"
     while (friend = friends[count]) {
+        console.log("111")
         var f = document.createElement('div')
         f.className = 'friend'
         var fImg = document.createElement('img')
