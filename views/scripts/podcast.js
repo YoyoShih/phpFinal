@@ -18,15 +18,75 @@ setTimeout(() => {
     mask.remove()
 }, 2000)
 
-function logout() {
-    fetch('http://localhost/final/phpFinal/models/logout.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
-        method: "POST",
+const top_block_sticker = document.getElementsByClassName('middle-main-top-block-sticker')[0]
+const top_block_name = document.getElementsByClassName('middle-main-top-block-name')[0];
+
+var account = '';
+(async function getAccount() {
+    renew()
+    var response = await fetch('http://localhost/final/phpFinal/models/login_check.php', {
+        method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(window.location.href = 'login.html')
-}
+    })
+    var result = await response.json()
+    account = result.account
+    top_block_name.innerHTML = account
+    var response = await fetch('http://localhost/final/phpFinal/models/getUserInfo.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            account: account
+        })
+    })
+    var result = await response.json()
+    var animal = result.animal
+    var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + animal + '.png')
+     animalURL.getDownloadURL().then((url) => {
+        top_block_sticker.src = url
+     })
+    var response = await fetch('http://localhost/final/phpFinal/models/getPastPodcast.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            account: account
+        })
+    })
+    var result = await response.json()
+    var podcasts = result.podcasts
+    const blocks = document.querySelectorAll('.podcast-blocks')[0]
+    var count = "1"
+    while (podcast = podcasts[count]) {
+        animal = podcast.animal
+        var nickname = podcast.nickname
+        var title = podcast.title
+        var block = document.createElement('div')
+        block.className = 'podcast-block'
+        var blockImg = document.createElement('img')
+        blockImg.className = 'podcast-block-img'
+        var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + animal + '.png')
+        animalURL.getDownloadURL().then((url) => {
+            blockImg.src = url
+        })
+        var blockName = document.createElement('div')
+        blockName.className = 'podcast-block-name'
+        blockName.innerHTML = nickname
+        var blockTitle = document.createElement('div')
+        blockTitle.className = 'podcast-block-title'
+        blockTitle.innerHTML = title
+        block.append(blockImg,blockName,blockTitle)
+        blocks.prepend(block)
+        count++
+    }
+})();
 
 function goSearch() {
     window.location.href = 'search.html'
@@ -89,6 +149,66 @@ async function goFB() {
         fName.innerHTML = friend.name
         f.append(fImg,fLive,fName)
         rightBody.append(f)
+        count++
+    }
+}
+
+async function renew() {
+    var count = "0"
+    var podcastsHot = [
+        { animal: "mouse", nickname: "ChiWhite", title: "我和我學生時期認識的老婆的戀愛辛酸史" },
+        { animal: "elephant", nickname: "YaoLinShu", title: "台三線私房景點大公開!" }
+    ]
+    const blocksHot = document.querySelectorAll('.podcast-blocks')[1]
+    while (podcast = podcastsHot[count]) {
+        animal = podcast.animal
+        var nickname = podcast.nickname
+        var title = podcast.title
+        var block = document.createElement('div')
+        block.className = 'podcast-block'
+        var blockImg = document.createElement('img')
+        blockImg.className = 'podcast-block-img'
+        var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + animal + '.png')
+        await animalURL.getDownloadURL().then((url) => {
+            blockImg.src = url
+        })
+        var blockName = document.createElement('div')
+        blockName.className = 'podcast-block-name'
+        blockName.innerHTML = nickname
+        var blockTitle = document.createElement('div')
+        blockTitle.className = 'podcast-block-title'
+        blockTitle.innerHTML = title
+        block.append(blockImg,blockName,blockTitle)
+        blocksHot.prepend(block)
+        count++
+    }
+
+    count = "0"
+    var podcastsAbroad = [
+        { animal: "frog", nickname: "YiShao", title: "我在出國留學前的準備" },
+        { animal: "bird", nickname: "BoBo", title: "疫情時期出國留學需要注意的大小事" }
+    ]
+    const blocksAbroad = document.querySelectorAll('.podcast-blocks')[2]
+    while (podcast = podcastsAbroad[count]) {
+        animal = podcast.animal
+        var nickname = podcast.nickname
+        var title = podcast.title
+        var block = document.createElement('div')
+        block.className = 'podcast-block'
+        var blockImg = document.createElement('img')
+        blockImg.className = 'podcast-block-img'
+        var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + animal + '.png')
+        await animalURL.getDownloadURL().then((url) => {
+            blockImg.src = url
+        })
+        var blockName = document.createElement('div')
+        blockName.className = 'podcast-block-name'
+        blockName.innerHTML = nickname
+        var blockTitle = document.createElement('div')
+        blockTitle.className = 'podcast-block-title'
+        blockTitle.innerHTML = title
+        block.append(blockImg,blockName,blockTitle)
+        blocksAbroad.prepend(block)
         count++
     }
 }

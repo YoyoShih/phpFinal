@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>聽 der! 找尋專屬於你的聲音</title>
         <link href="style/common.css" rel="stylesheet" type="text/css">
-        <link href="style/podcast.css" rel="stylesheet" type="text/css">
+        <link href="style/podcaster.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="wrap">
@@ -23,35 +23,16 @@
                     </div>
                 </div>
                 <div class="middle-main-middle">
-                    <div class="podcast-main-title">快找尋您喜歡的Podcast吧!</div>
-                    <div class="podcast-main-subtitle">
-                        千百萬個Podcaster、多樣化的主題，等你來發掘!<br/>
-                        點擊頭像以查看Podcaster的詳細資訊，喜歡的話，直接追蹤以防錯過任何最新的podcast!
+                    <div class="podcaster-main">
+                        <img class="podcaster-img">
+                        <div class="podcaster-text">
+                            <div class="podcaster-name">ChiWhite</div>
+                            <div class="podcaster-fig">和老婆一起製作的podcast</div>
+                            <div class="podcaster-info">適合您、69個收錄、1萬點閱率</div>
+                        </div>
                     </div>
                 </div>
-                <div class="middle-main-below">
-                    <div class="podcast-past">
-                        <p class="podcast-title">已按讚的Podcast</p>
-                        <hr>
-                        <div class="podcast-blocks">
-                            <div class="podcast-block">點擊以查看更多</div>
-                        </div>
-                    </div>
-                    <div class="podcast-hot">
-                        <p class="podcast-title">熱門Podcast</p>
-                        <hr>
-                        <div class="podcast-blocks">
-                            <div class="podcast-block">點擊以查看更多</div>
-                        </div>
-                    </div>
-                    <div class="podcast-abroad">
-                        <p class="podcast-title">留學Podcast精選</p>
-                        <hr>
-                        <div class="podcast-blocks">
-                            <div class="podcast-block">點擊以查看更多</div>
-                        </div>
-                    </div>
-                </div>         
+                <div class="middle-main-below"></div>         
             </div>
             <div class="right-link">
                 <p class="right-link-title">連結你的社群媒體!</p>
@@ -70,8 +51,21 @@
             <img class="left" src="../src/left.png">
             <img class="right" src="../src/right.png">
         </div>
+        <div class="bottom-controler">
+            <div class="controler">
+                <img src="../src/random.png">
+                <img src="../src/prev.png">
+                <img src="../src/play.png">
+                <img src="../src/former.png">
+                <img src="../src/repeat.png">
+            </div>
+            <div class="progress">
+                <div class="progress-plot"></div>
+                <div class="progress-line"></div>
+            </div>
+        </div>
         <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
-        <script src="scripts/podcast.js"></script>
+        <script src="scripts/podcaster.js"></script>
     </body>
 </html>
