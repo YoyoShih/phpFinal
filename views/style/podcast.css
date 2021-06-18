@@ -1,0 +1,181 @@
+.wrap {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.left-nav {
+  background-color: #121e35;
+  color: white;
+  height: 100vh;
+  margin: 0;
+  position: fixed;
+  width: 20vw;
+  z-index: 3;
+}
+
+.left-nav > div {
+  border-bottom: 1px solid white;
+  cursor: pointer;
+  font-size: 1.7vw;
+  height: 10vh;
+  line-height: 10vh;
+  padding-left: 3vw;
+}
+
+.left-nav > div:hover {
+  background-color: #a2b6db;
+}
+
+.logout {
+  border-radius: 99vw;
+  cursor: pointer;
+  height: 4vw;
+  left: 8vw;
+  position: fixed;
+  top: 83vh;
+  width: 4vw;
+}
+
+.logout:hover {
+  background-color: #00b8ff;
+}
+
+.middle-main {
+  display: flex;
+  flex-direction: column;
+  height: 200vh;
+  margin-left: 20vw;
+  width: 55vw;
+}
+
+.middle-main-top {
+  background-color: #344d7be5;
+  height: 12vh;
+  left: 0vw;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+}
+
+.middle-main-buttom {
+  background-color: transparent;
+  height: 100vh;
+  padding: 10vw;
+  padding-top: 90vh;
+  width: 35vw;
+  position: fixed;
+}
+
+.middle-main-top-block {
+  background-color: #b5cfff44;
+  border-radius: 1vh;
+  height: 7vh;
+  position: absolute;
+  right: 27vw;
+  top: 2.5vh;
+  width: 20vw;
+}
+
+.middle-main-top-block-sticker {
+  background-color: white;
+  box-shadow: inset 0 0 0.3vh 0.3vh black;
+  cursor: pointer;
+  height: 5vh;
+  position: absolute;
+  left: 1vw;
+  top: 1vh;
+  width: 5vh;
+}
+
+.middle-main-top-block-name {
+  cursor: pointer;
+  position: absolute;
+  left: 4vw;
+  top: -0.4vh;
+}
+
+.middle-main-top-block-menu {
+  cursor: pointer;
+  height: 2vh;
+  opacity: 0.6;
+  position: absolute;
+  right: 1vw;
+  top: 2.5vh;
+}
+
+.middle-main-middle {
+  background: linear-gradient(#344d7b, #050d1b);
+  box-shadow: inset 0.1vmin 0 3vmin black;
+  color: white;
+  height: 88vh;
+  margin-top: 12vh;
+  padding: 10vw;
+  padding-top: 5vh;
+  width: 35vw;
+}
+
+.middle-main-middle > div {
+  padding-top: 10vh;
+}
+
+.middle-main-below {
+  background-color: black;
+  box-shadow: inset 0.1vmin 0 3vmin black;
+  color: white;
+  height: 100vh;
+  padding: 10vw;
+  padding-top: 10vh;
+  width: 35vw;
+}
+
+.right-link {
+  background-color: #121e35;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  width: 25vw;
+  z-index: 1;
+}
+
+.right-link-title {
+  font-size: x-large;
+  text-align: center;
+}
+
+.right-link > hr {
+  border: 0.1px solid white;
+  width: 100%;
+}
+
+.right-link-body {
+  font-size: medium;
+  line-height: 4.5vh;
+  padding: 3vw;
+  padding-top: 5vh;
+  padding-bottom: 0;
+}
+
+.right-link-body > u {
+  color: #00b8ff;
+}
+
+.background-other {
+  animation: move-left 1.5s ease-out 0s 1 normal forwards;
+  height: 100vh;
+  left: 100%;
+  position: fixed;
+  z-index: 2;
+}
+
+@keyframes move-left {
+  0% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(-250vw);
+  }
+}

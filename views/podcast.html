@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>聽 der! 找尋專屬於你的聲音</title>
+        <link href="style/common.css" rel="stylesheet" type="text/css">
+        <link href="style/podcast.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="left-nav">
+                <div onclick="goUserInfoFunc()">帳戶資訊</div>
+                <div>首頁</div>
+                <div onclick="goSearch()">探索</div>
+                <div>音樂庫</div>
+                <img class="logout" src="../src/logout.png" onclick="logout()">
+            </div>
+            <div class="middle-main">
+                <div class="middle-main-top"> 
+                    <div class="middle-main-top-block">
+                        <img class="middle-main-top-block-sticker">
+                        <p class="middle-main-top-block-name"></p>
+                        <img class="middle-main-top-block-menu" src="../src/triangle.png">
+                    </div>
+                </div>
+                <div class="middle-main-middle"></div>
+                <div class="middle-main-below"></div>         
+            </div>
+            <div class="right-link">
+                <p class="right-link-title">連結你的社群媒體!</p>
+                <hr>
+                <p class="right-link-body">
+                    透過將「聽der」帳戶連結至您<u onclick="goFB()">Facebook</u>、
+                    <u>Instagram</u>、<u>Twitter</u>等社群媒體，
+                    可以讓您即時分享在「聽der」的近況給您的朋友們!<br>
+                    點擊上方連結，或是至「帳戶資訊」頁面中「社群媒體」
+                    進行設定!
+                </p>
+            </div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+        <script src="scripts/podcast.js"></script>
+    </body>
+</html>

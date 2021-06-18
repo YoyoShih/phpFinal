@@ -68,26 +68,6 @@ const musicBlocks = document.getElementsByClassName('music-blocks')[0];
     }
 })()
 
-function getFriends() {
-    // var friends = []
-    // const response = await fetch('http://localhost/final/phpFinal/models/getFriends.php', {
-    //     method: "GET",
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     }
-    // })
-    //return friends = await response.json()
-    return friends = [
-        { name: "Yoyo" },
-        { name: "rick" },
-        { name: "amber" },
-        { name: "alex" },
-        { name: "dennnis" },
-        { name: "87white" }
-    ]
-}
-
 function logout() {
     fetch('http://localhost/final/phpFinal/models/logout.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
         method: "POST",
@@ -102,13 +82,45 @@ function goSearch() {
     window.location.href = 'search.html'
 }
 
-function goFB() {
+var friends = [
+    {
+        name: "Yoyo",
+        animal: "bird",
+        live: true
+    },
+    {
+        name: "rick",
+        animal: "cat",
+        live: true
+    },
+    {
+        name: "amber",
+        animal: "frog",
+        live: false
+    },
+    {
+        name: "alex",
+        animal: "koala",
+        live: true
+    },
+    {
+        name: "dennnis",
+        animal: "bird",
+        live: false
+    },
+    {
+        name: "87white",
+        animal: "cow",
+        live: true
+    }
+]
+
+async function goFB() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
     window.open('fb.html')
     rightTitle.innerHTML = '您已連結至您的FB'
     rightBody.innerHTML = ''
-    var friends = getFriends()
     var friend = ''
     var count = "0"
     while (friend = friends[count]) {
@@ -117,12 +129,12 @@ function goFB() {
         f.className = 'friend'
         var fImg = document.createElement('img')
         fImg.className = 'friend-img'
-        // const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/friend/'+friend.name+'.jpg')
-        // await fURL.getDownloadURL().then((url) => {
-        //     fImg.src = url
-        // })
+        const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+friend.animal+'.png')
+        await fURL.getDownloadURL().then((url) => {
+            fImg.src = url
+        })
         var fLive = document.createElement('div')
-        fLive.className = 'friend-live'
+        friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
         var fName = document.createElement('div')
         fName.innerHTML = friend.name
         f.append(fImg,fLive,fName)
