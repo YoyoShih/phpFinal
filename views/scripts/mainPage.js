@@ -18,22 +18,7 @@ setTimeout(() => {
     mask.remove()
 }, 2000)
 
-function logout() {
-    fetch('http://localhost/final/phpFinal/models/logout.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }).then(window.location.href = 'login.html')
-}
-
-function goSearch() {
-    window.location.href = 'search.html'
-}
-
 const musicBlocks = document.getElementsByClassName('music-blocks')[0];
-
 (async function getMusic() {
     var musics = []
     const response = await fetch('http://localhost/final/phpFinal/models/getUserMusic.php', {
@@ -82,3 +67,65 @@ const musicBlocks = document.getElementsByClassName('music-blocks')[0];
         count++
     }
 })()
+
+function getFriends() {
+    var friends = []
+    const response = await fetch('http://localhost/final/phpFinal/models/getFriends.php', {
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    return friends = await response.json()
+    // return friends = [
+    //     { name: "Yoyo" },
+    //     { name: "Rick" },
+    //     { name: "Yoyo" },
+    //     { name: "Rick" },
+    //     { name: "Yoyo" },
+    //     { name: "Rick" }
+    // ]
+}
+
+function logout() {
+    fetch('http://localhost/final/phpFinal/models/logout.php', { //rick:http://localhost/final/phpFinal/models/login_check.php     white:http://localhost/phpFinal/models/login_check.php      yoyo:http://localhost/User_Project/login_check.php
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(window.location.href = 'login.html')
+}
+
+function goSearch() {
+    window.location.href = 'search.html'
+}
+
+function goFB() {
+    const rightTitle = document.querySelector('.right-link-title')
+    const rightBody = document.querySelector('.right-link-body')
+    window.open('fb.html')
+    rightTitle.innerHTML = '您已連結至您的FB'
+    rightBody.innerHTML = ''
+    var friends = getFriends()
+    var friend = ''
+    var count = "0"
+    while (friend = friends[count]) {
+        var f = document.createElement('div')
+        f.className = 'friend'
+        var fImg = document.createElement('img')
+        fImg.className = 'friend-img'
+        // const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/friend/'+friend.name+'.jpg')
+        // await fURL.getDownloadURL().then((url) => {
+        //     fImg.src = url
+        // })
+        var fLive = document.createElement('div')
+        fLive.className = 'friend-live'
+        var fName = document.createElement('div')
+        fName.innerHTML = friend.name
+        f.append(fImg,fLive,fName)
+        rightBody.append(f)
+        count++
+    }
+}
