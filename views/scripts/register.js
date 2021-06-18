@@ -69,7 +69,6 @@ emailInput.onblur = function () {
 }
 
 function registerFunc() {
-    registerSecond()
     account = accountInput.value
     const password = passwordtInput.value
     const passwordCheck = passwordCheckInput.value
@@ -124,7 +123,7 @@ function isValidPass(password){
     var i = /[0-9]+/
     var capital = /[A-Z]/
     var lower = /[a-z]/
-    return password.length <= 20 || capital.test(password) || lower.test(password) || i.test(password)
+    return password.length <= 20 && capital.test(password) && lower.test(password) && i.test(password)
 }
 
 function isValidPassCheck(password,passwordCheck) {

@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <title>聽 der! 找尋專屬於你的聲音</title>
         <link href="style/common.css" rel="stylesheet" type="text/css">
-        <link href="style/mainPage.css" rel="stylesheet" type="text/css">
-        <link href="style/userInfo.css" rel="stylesheet" type="text/css">
+        <link href="style/music.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="wrap">
@@ -17,14 +16,14 @@
                 <img class="logout" src="../src/logout.png" onclick="logout()">
             </div>
             <div class="middle-main">
-                <div class="middle-main-top">
+                <div class="middle-main-top"> 
                     <div class="middle-main-top-block">
                         <img class="middle-main-top-block-sticker">
                         <p class="middle-main-top-block-name"></p>
                         <img class="middle-main-top-block-menu" src="../src/triangle.png">
                     </div>
                 </div>
-                <div class="middle-main-middle">
+                <div class="middle-main-middle"> 
                     <div class="profile">
                         <img class="profile-sticker">
                         <div class="profile-info">
@@ -36,15 +35,8 @@
                             <div class="profile-info-music"></div>
                         </div>
                     </div>
-                    <div class="music">
-                        <p class="music-title">音樂庫</p>
-                        <hr>
-                        <div class="music-blocks">
-                            <div class="music-block">點擊以查看更多</div>
-                        </div>
-                    </div>
                 </div>
-                <div class="middle-main-below">
+                <div class="middle-main-below"> 
                     <div class="podcast">
                         <p class="podcast-title">已按讚的Podcast</p>
                         <hr>
@@ -64,6 +56,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="middle-main-buttom">
+                    <audio src="https://s3-ap-northeast-1.amazonaws.com/dazedbear-assets/Bluebird.mp3" controls>
+                    </audio>
+                </div>           
             </div>
             <div class="right-link">
                 <p class="right-link-title">連結你的社群媒體!</p>
@@ -77,14 +73,8 @@
                 </p>
             </div>
         </div>
-        <div class="mask">
-            <img class="logo" src="../src/logo.png">
-            <img class="left" src="../src/left.png">
-            <img class="right" src="../src/right.png">
-        </div>
         <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
         <script src="scripts/mainPage.js"></script>
-        <script src="scripts/userInfo.js"></script>
     </body>
 </html>

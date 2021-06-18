@@ -1,0 +1,347 @@
+.wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+  }
+  
+  .left-nav {
+    background-color: #121e35;
+    color: white;
+    height: 100vh;
+    margin: 0;
+    position: fixed;
+    width: 20vw;
+    z-index: 3;
+  }
+  
+  .left-nav > div {
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    font-size: 1.7vw;
+    height: 10vh;
+    line-height: 10vh;
+    padding-left: 3vw;
+  }
+  
+  .left-nav > div:hover {
+    background-color: #a2b6db;
+  }
+  
+  .logout {
+    border-radius: 99vw;
+    cursor: pointer;
+    height: 4vw;
+    left: 8vw;
+    position: fixed;
+    top: 83vh;
+    width: 4vw;
+  }
+  
+  .logout:hover {
+    background-color: #00b8ff;
+  }
+  
+  .middle-main {
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+    margin-left: 20vw;
+    width: 55vw;
+  }
+  
+  .middle-main-top {
+    background-color: #344d7be5;
+    height: 12vh;
+    left: 0vw;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+  }
+
+  .middle-main-buttom {
+    background-color: transparent;
+    height: 100vh;
+    padding: 10vw;
+    padding-top: 90vh;
+    width: 35vw;
+    position: fixed;
+  }
+  
+  .middle-main-top-block {
+    background-color: #b5cfff44;
+    border-radius: 1vh;
+    height: 7vh;
+    position: absolute;
+    right: 27vw;
+    top: 2.5vh;
+    width: 20vw;
+  }
+  
+  .middle-main-top-block-sticker {
+    background-color: white;
+    box-shadow: inset 0 0 0.3vh 0.3vh black;
+    cursor: pointer;
+    height: 5vh;
+    position: absolute;
+    left: 1vw;
+    top: 1vh;
+    width: 5vh;
+  }
+  
+  .middle-main-top-block-name {
+    cursor: pointer;
+    position: absolute;
+    left: 4vw;
+    top: -0.4vh;
+  }
+  
+  .middle-main-top-block-menu {
+    cursor: pointer;
+    height: 2vh;
+    opacity: 0.6;
+    position: absolute;
+    right: 1vw;
+    top: 2.5vh;
+  }
+  
+  .middle-main-middle {
+    background: linear-gradient(#344d7b, #050d1b);
+    box-shadow: inset 0.1vmin 0 3vmin black;
+    color: white;
+    height: 88vh;
+    margin-top: 12vh;
+    padding: 10vw;
+    padding-top: 5vh;
+    width: 35vw;
+  }
+  
+  .middle-main-middle > div {
+    padding-top: 10vh;
+  }
+  
+  .profile {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .profile-sticker {
+    background-color: white;
+    box-shadow: inset 0 0 0.8vh 0.8vh black;
+    height: 17vw;
+    width: 17vw;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+  }
+  
+  .profile-info > div {
+    margin-bottom: 2vh;
+    font-size: medium;
+  }
+  
+  .profile-info > p {
+    font-size: x-large;
+  }
+  
+  .music-title {
+    font-size: x-large;
+  }
+  
+  .music > hr {
+    border: 0.1px solid white;
+    width: 100%;
+  }
+  
+  .music-blocks {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2vh;
+    width: 50vw;
+  }
+  
+  .music-block {
+    align-items: center;
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 0 0 0.5vh 0.5vh black;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    margin-right: 1.5vw;
+    opacity: 0.8;
+    position: relative;
+    padding-top: 1vw;
+    width: 15vw;
+  }
+  
+  .music-block:last-child {
+    line-height: 40vh;
+  }
+  
+  .music-block-cover {
+    border-radius: 1vh;
+    height: 13vw;
+    width: 13vw;
+  }
+  
+  .music-block-intro {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 15vh;
+  }
+  
+  .music-block-intro-main {
+    width: 6vw;
+  }
+  
+  .music-block-intro-main-name {
+    font-size: larger;
+  }
+  
+  .music-block-intro-main-produce {
+    font-size: small;
+  }
+  
+  .music-block-intro-blank {
+    width: 3vw;
+  }
+  
+  .music-block-intro-type {
+    width: 3vw;
+  }
+  
+  .middle-main-below {
+    background-color: black;
+    box-shadow: inset 0.1vmin 0 3vmin black;
+    color: white;
+    height: 100vh;
+    padding: 10vw;
+    padding-top: 10vh;
+    width: 35vw;
+  }
+  
+  .podcast-title {
+    font-size: x-large;
+  }
+  
+  .podcast > hr {
+    border: 0.1px solid white;
+    width: 100%;
+  }
+  
+  .podcast-blocks {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2vh;
+  }
+  
+  .podcast-block {
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 0.5vh 0.5vh black;
+    border-radius: 1vw;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    margin-right: 1.5vw;
+    opacity: 0.8;
+    position: relative;
+    padding-top: 1vw;
+    width: 15vw;
+  }
+  
+  .podcast-block:last-child {
+    line-height: 40vh;
+  }
+  
+  .podcast-block-cover {
+    background-color: black;
+    border-radius: 1vh;
+    height: 13vw;
+    width: 13vw;
+  }
+  
+  .podcast-block-intro {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 11vh;
+  }
+  
+  .podcast-block-intro-main {
+    width: 4vw;
+  }
+  
+  .podcast-block-intro-main-name {
+    font-size: larger;
+  }
+  
+  .podcast-block-intro-main-produce {
+    font-size: small;
+  }
+  
+  .podcast-block-intro-blank {
+    width: 4vw;
+  }
+  
+  .podcast-block-intro-type {
+    width: 3vw;
+  }
+  
+  .right-link {
+    background-color: #121e35;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    width: 25vw;
+    z-index: 1;
+  }
+  
+  .right-link-title {
+    font-size: x-large;
+    text-align: center;
+  }
+  
+  .right-link > hr {
+    border: 0.1px solid white;
+    width: 100%;
+  }
+  
+  .right-link-body {
+    font-size: medium;
+    line-height: 4.5vh;
+    padding: 3vw;
+    padding-top: 5vh;
+    padding-bottom: 0;
+  }
+  
+  .right-link-body > u {
+    color: #00b8ff;
+  }
+  
+  .background-other {
+    animation: move-left 1.5s ease-out 0s 1 normal forwards;
+    height: 100vh;
+    left: 100%;
+    position: fixed;
+    z-index: 2;
+  }
+  
+  @keyframes move-left {
+    0% {
+      transform: translateX(0vw);
+    }
+    100% {
+      transform: translateX(-250vw);
+    }
+  }

@@ -3,7 +3,7 @@ require dirname(__FILE__).'\db_connect.php';
 require dirname(__FILE__).'\core.php';
 session_id('phpFinal');
 session_start();
-//unset($_SESSION['account']);
+// unset($_SESSION['account']);
 if(isset($_SESSION['account'])){              //!empty($_SESSION['account'])
     echo json_encode([      
         "account" => $_SESSION['account']
@@ -24,7 +24,7 @@ function checkData($username,$password,$conn){
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 0) {
         echo json_encode([     
-        "loginSucc" => false
+            "loginSucc" => false
         ]);    
     }
     else{

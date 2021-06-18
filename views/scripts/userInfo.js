@@ -179,9 +179,22 @@ function goUserInfoFunc() {
         input6.value = info
         var p7 = document.createElement('p')
         p7.innerHTML = "動物"
-
         var animalWrap = document.createElement('div')
         animalWrap.className = 'animals'
+
+        form.append(p1, p2, input1, input2, p3, p4,input3,  input4, p5, p6, input5, input6, p7, animalWrap)
+        var btn = document.createElement('button')
+        btn.className = 'update-btn'
+        btn.innerHTML = "更新"
+        btn.addEventListener('click', updateFunc)
+        userInfoBelow.append(h2,form, btn)
+        wrap.append(userInfoBelow)
+        var img = document.createElement('img')
+        img.className = 'background'
+        img.src = "../src/userInfo_background.png"
+        wrap.append(img)
+
+        animalWrap = document.getElementsByClassName('animals')[0]
         for (var i = 0; i < len; i++){
             const animalImg = document.createElement('img')
             const animal = animalsCopy.shift()
@@ -200,21 +213,6 @@ function goUserInfoFunc() {
                 target.classList.add('animal-selected')
             }
         }
-
-        form.append(p1, p2, input1, input2, p3, p4,input3,  input4, p5, p6, input5, input6, p7, animalWrap)
-        var btn = document.createElement('button')
-        btn.className = 'update-btn'
-        btn.innerHTML = "更新"
-        btn.addEventListener('click', updateFunc)
-        
-        userInfoBelow.append(h2,form, btn)
-        
-        wrap.append(userInfoBelow)
-
-        var img = document.createElement('img')
-        img.className = 'background'
-        img.src = "../src/userInfo_background.png"
-        wrap.append(img)
     }, 700)
     
     setTimeout(() => {
