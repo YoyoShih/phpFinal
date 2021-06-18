@@ -113,32 +113,42 @@ var friends = [
         animal: "cow",
         live: true
     }
-]
+];
 
-async function goFB() {
+(async function goFB() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
     window.open('fb.html')
-    rightTitle.innerHTML = '您已連結至您的FB'
-    rightBody.innerHTML = ''
-    var friend = ''
-    var count = "0"
-    while (friend = friends[count]) {
-        console.log("111")
-        var f = document.createElement('div')
-        f.className = 'friend'
-        var fImg = document.createElement('img')
-        fImg.className = 'friend-img'
-        const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+friend.animal+'.png')
-        await fURL.getDownloadURL().then((url) => {
-            fImg.src = url
-        })
-        var fLive = document.createElement('div')
-        friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
-        var fName = document.createElement('div')
-        fName.innerHTML = friend.name
-        f.append(fImg,fLive,fName)
-        rightBody.append(f)
-        count++
+    const response = await fetch('http://localhost/final/phpFinal/models/getUserMusic.php', {
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    var isFB = await response.json()
+    if (isFB) {
+        rightTitle.innerHTML = '您已連結至您的FB'
+        rightBody.innerHTML = ''
+        var friend = ''
+        var count = "0"
+        while (friend = friends[count]) {
+            console.log("111")
+            var f = document.createElement('div')
+            f.className = 'friend'
+            var fImg = document.createElement('img')
+            fImg.className = 'friend-img'
+            const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+friend.animal+'.png')
+            await fURL.getDownloadURL().then((url) => {
+                fImg.src = url
+            })
+            var fLive = document.createElement('div')
+            friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
+            var fName = document.createElement('div')
+            fName.innerHTML = friend.name
+            f.append(fImg,fLive,fName)
+            rightBody.append(f)
+            count++
+        }
     }
-}
+})()

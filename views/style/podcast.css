@@ -27,20 +27,6 @@
   background-color: #a2b6db;
 }
 
-.logout {
-  border-radius: 99vw;
-  cursor: pointer;
-  height: 4vw;
-  left: 8vw;
-  position: fixed;
-  top: 83vh;
-  width: 4vw;
-}
-
-.logout:hover {
-  background-color: #00b8ff;
-}
-
 .middle-main {
   display: flex;
   flex-direction: column;
@@ -178,4 +164,13 @@
   100% {
     transform: translateX(-250vw);
   }
+}
+
+.bottom-controler {
+  background-color: #233555;
+  bottom: 0;
+  height: 15vh;
+  position: fixed;
+  width: 100vw;
+  z-index: 5;
 }
