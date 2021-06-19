@@ -49,7 +49,7 @@ const top_block_sticker = document.getElementsByClassName('middle-main-top-block
 const top_block_name = document.getElementsByClassName('middle-main-top-block-name')[0];
 
 //  取得account的函數 進入頁面會馬上執行一次
-(function getAccount() {
+(async function getAccount() {
     var response = await fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
         headers: {

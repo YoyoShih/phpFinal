@@ -31,13 +31,27 @@
   border-radius: 99vw;
   cursor: pointer;
   height: 4vw;
-  left: 8vw;
+  left: 5vw;
   position: fixed;
   top: 83vh;
   width: 4vw;
 }
 
 .logout:hover {
+  background-color: #00b8ff;
+}
+
+.chat {
+  border-radius: 99vw;
+  cursor: pointer;
+  height: 4vw;
+  left: 11vw;
+  position: fixed;
+  top: 83vh;
+  width: 4vw;
+}
+
+.chat:hover {
   background-color: #00b8ff;
 }
 

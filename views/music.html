@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>聽 der! 找尋專屬於你的聲音</title>
+    <link href="style/common.css" rel="stylesheet" type="text/css">
+    <link href="style/music.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left-nav">
+            <div onclick="goUserInfoFunc()">帳戶資訊</div>
+            <div onclick="goMainpage()">首頁</div>
+            <div onclick="goSearch()">探索</div>
+            <div onclick="goPodcast()">Podcast</div>
+            <div onclick="goMusic()">音樂庫</div>
+            <img class="logout" src="../src/logout.png" onclick="logout()">
+            <img class="chat" src="../src/chat.png" onclick="chat()">
+        </div>
+        <div class="middle-main">
+            <div class="middle-main-top">
+                <div class="middle-main-top-block">
+                    <img class="middle-main-top-block-sticker">
+                    <p class="middle-main-top-block-name"></p>
+                    <img class="middle-main-top-block-menu" src="../src/triangle.png">
+                </div>
+            </div>
+            <div class="middle-main-middle">
+                <div class="music-main-title">尋找您喜歡的音樂專輯</div>
+                <div class="music-main-subtitle">
+                    收藏全球上億張熱門專輯、查看西洋熱門榜、華語熱門榜以跟上最新流行歌曲!
+                </div>
+            </div>
+            <div class="middle-main-below">
+                <div class="music-past">
+                    <p class="music-title">已收藏的專輯</p>
+                    <hr>
+                    <div class="music-blocks">
+                        <div class="music-block">點擊以查看更多</div>
+                    </div>
+                </div>
+                <div class="music-east">
+                    <p class="music-title">西洋熱門專輯</p>
+                    <hr>
+                    <div class="music-blocks">
+                        <div class="music-block">點擊以查看更多</div>
+                    </div>
+                </div>
+                <div class="music-chinese">
+                    <p class="music-title">華語熱門專輯</p>
+                    <hr>
+                    <div class="music-blocks">
+                        <div class="music-block">點擊以查看更多</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-link">
+            <p class="right-link-title">連結你的社群媒體!</p>
+            <hr>
+            <p class="right-link-body">
+                透過將「聽der」帳戶連結至您<u onclick="goFB()">Facebook</u>、
+                <u>Instagram</u>、<u>Twitter</u>等社群媒體，
+                可以讓您即時分享在「聽der」的近況給您的朋友們!<br>
+                點擊上方連結，或是至「帳戶資訊」頁面中「社群媒體」
+                進行設定!
+            </p>
+        </div>
+    </div>
+    <div class="mask">
+        <img class="logo" src="../src/logo.png">
+        <img class="left" src="../src/left.png">
+        <img class="right" src="../src/right.png">
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+    <script src="scripts/music.js"></script>
+</body>
+
+</html>
