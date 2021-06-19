@@ -107,7 +107,8 @@
 }
 
 .podcaster-img {
-  background-color: white;
+  background-color: rgb(199, 199, 199);
+  border-radius: 1vw;
   height: 15vw;
   margin-right: 3vw;
   width: 15vw;
@@ -141,10 +142,61 @@
   background: linear-gradient(#3f4b64, #1b1e24);
   box-shadow: inset 0 -1.5vh 2.5vmin 1.5vmin rgb(26, 26, 26);
   color: white;
-  height: 100vh;
-  padding: 10vw;
+  height: 210vh;
+  padding: 7vw;
   padding-top: 10vh;
-  width: 35vw;
+  width: 41vw;
+}
+
+.list-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  width: 43vw;
+}
+
+.list-header > img {
+  cursor: pointer;
+  height: 4vh;
+  margin: 1vw;
+  margin-top: -2vw;
+  width: 4vh;
+}
+
+.list-header > img:nth-of-type(3) {
+  height: 1vh;
+  width: 5vh;
+}
+
+.list-header-blank {
+  flex-grow: 1;
+}
+
+.list-header > input {
+  background: none;
+  border: none;
+  border-bottom: solid 1px rgb(168, 168, 168);
+  color: white;
+  margin-top: -3vw;
+  width: 4vw;
+}
+
+.list-wrapper {
+  align-items: center;
+  color: rgb(168, 168, 168);
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr;
+  margin-top: 2vw;
+  width: 47vw;
+}
+
+.pod-title {
+  cursor: pointer;
+}
+
+.clock {
+  width: 1vw;
 }
 
 .right-link {

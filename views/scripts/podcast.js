@@ -63,7 +63,7 @@ var account = '';
     var result = await response.json()
     var podcasts = result.podcasts
     const blocks = document.querySelectorAll('.podcast-blocks')[0]
-    var count = "1"
+    var count = "0"
     while (podcast = podcasts[count]) {
         animal = podcast.animal
         var nickname = podcast.nickname
@@ -134,7 +134,6 @@ async function goFB() {
     var friend = ''
     var count = "0"
     while (friend = friends[count]) {
-        console.log("111")
         var f = document.createElement('div')
         f.className = 'friend'
         var fImg = document.createElement('img')
