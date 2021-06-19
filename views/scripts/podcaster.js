@@ -179,6 +179,7 @@ function love() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                name:"ChiWhite",
                 love: true
             })
         })
@@ -193,6 +194,7 @@ function love() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                name:"ChiWhite",
                 love: false
             })
         })
