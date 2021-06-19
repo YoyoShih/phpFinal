@@ -219,9 +219,10 @@
 
 .podcast-title {
   font-size: x-large;
+  margin-bottom: 2vh;
 }
 
-.podcast > hr {
+.podcast-past > hr {
   border: 0.1px solid white;
   width: 100%;
 }
@@ -229,7 +230,9 @@
 .podcast-blocks {
   display: flex;
   flex-direction: row;
+  overflow-x: visible;
   padding-top: 2vh;
+  width: fit-content;
 }
 
 .podcast-block {
@@ -238,52 +241,37 @@
   box-shadow: 0 0 0.5vh 0.5vh black;
   border-radius: 1vw;
   color: black;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 40vh;
   margin-right: 1.5vw;
   opacity: 0.8;
   position: relative;
-  padding-top: 1vw;
-  width: 15vw;
+  padding-top: 2vw;
+  width: 13vw;
 }
 
 .podcast-block:last-child {
   line-height: 40vh;
 }
 
-.podcast-block-cover {
+.podcast-block-img {
   background-color: black;
   border-radius: 1vh;
-  height: 13vw;
-  width: 13vw;
+  height: 10vw;
+  width: 10vw;
 }
 
-.podcast-block-intro {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  height: 11vh;
+.podcast-block-name {
+  font-size: x-large;
+  padding-top: 2vh;
 }
 
-.podcast-block-intro-main {
-  width: 4vw;
-}
-
-.podcast-block-intro-main-name {
-  font-size: larger;
-}
-
-.podcast-block-intro-main-produce {
-  font-size: small;
-}
-
-.podcast-block-intro-blank {
-  width: 4vw;
-}
-
-.podcast-block-intro-type {
-  width: 3vw;
+.podcast-block-title {
+  padding: 3vh;
+  padding-top: 1vh;
+  text-align: center;
 }
 
 .right-link {

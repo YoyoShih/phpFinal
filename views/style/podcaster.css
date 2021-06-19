@@ -27,6 +27,20 @@
   background-color: #a2b6db;
 }
 
+.logout {
+  border-radius: 99vw;
+  cursor: pointer;
+  height: 4vw;
+  left: 8vw;
+  position: fixed;
+  top: 72vh;
+  width: 4vw;
+}
+
+.logout:hover {
+  background-color: #00b8ff;
+}
+
 .middle-main {
   display: flex;
   flex-direction: column;

@@ -123,12 +123,61 @@ var friends = [
         animal: "cow",
         live: true
     }
-]
+];
+
+(async function check() {
+    const rightTitle = document.querySelector('.right-link-title')
+    const rightBody = document.querySelector('.right-link-body')
+    const response = await fetch('http://localhost/final/phpFinal/models/fb_connect.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            isCLick: false
+        })
+    })
+    var result = await response.json()
+    if (result.isFB) {
+        rightTitle.innerHTML = '您已連結至您的FB'
+        rightBody.innerHTML = ''
+        var friend = ''
+        var count = "0"
+        while (friend = friends[count]) {
+            var f = document.createElement('div')
+            f.className = 'friend'
+            var fImg = document.createElement('img')
+            fImg.className = 'friend-img'
+            const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + friend.animal + '.png')
+            await fURL.getDownloadURL().then((url) => {
+                fImg.src = url
+            })
+            var fLive = document.createElement('div')
+            friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
+            var fName = document.createElement('div')
+            fName.innerHTML = friend.name
+            f.append(fImg, fLive, fName)
+            rightBody.append(f)
+            count++
+        }
+    }
+})();
 
 async function goFB() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
     window.open('fb.html')
+    fetch('http://localhost/final/phpFinal/models/fb_connect.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            isCLick: true
+        })
+    })
     rightTitle.innerHTML = '您已連結至您的FB'
     rightBody.innerHTML = ''
     var friend = ''
@@ -152,10 +201,18 @@ async function goFB() {
     }
 }
 
+function goMainpage() {
+    window.location.href = 'mainpage.html'
+}
+
+function goPodcast() {
+    window.location.href = 'podcast.html'
+}
+
 async function renew() {
     var count = "0"
     var podcastsHot = [
-        { animal: "mouse", nickname: "ChiWhite", title: "我和我學生時期認識的老婆的戀愛辛酸史" },
+        { animal: "chicken", nickname: "ChiWhite", title: "我和我學生時期認識的老婆的戀愛辛酸史" },
         { animal: "elephant", nickname: "YaoLinShu", title: "台三線私房景點大公開!" }
     ]
     const blocksHot = document.querySelectorAll('.podcast-blocks')[1]
@@ -210,4 +267,8 @@ async function renew() {
         blocksAbroad.prepend(block)
         count++
     }
+    const ChiWhite = document.querySelectorAll('.podcast-block')[2]
+    ChiWhite.addEventListener('click', () => {
+        window.location.href = 'podcaster.html'
+    })
 }
