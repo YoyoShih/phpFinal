@@ -96,12 +96,61 @@ var friends = [
         animal: "cow",
         live: true
     }
-]
+];
+
+(async function check() {
+    const rightTitle = document.querySelector('.right-link-title')
+    const rightBody = document.querySelector('.right-link-body')
+    const response = await fetch('http://localhost/final/phpFinal/models/fb_connect.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            isCLick: false
+        })
+    })
+    var result = await response.json()
+    if (result.isFB) {
+        rightTitle.innerHTML = '您已連結至您的FB'
+        rightBody.innerHTML = ''
+        var friend = ''
+        var count = "0"
+        while (friend = friends[count]) {
+            var f = document.createElement('div')
+            f.className = 'friend'
+            var fImg = document.createElement('img')
+            fImg.className = 'friend-img'
+            const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + friend.animal + '.png')
+            await fURL.getDownloadURL().then((url) => {
+                fImg.src = url
+            })
+            var fLive = document.createElement('div')
+            friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
+            var fName = document.createElement('div')
+            fName.innerHTML = friend.name
+            f.append(fImg, fLive, fName)
+            rightBody.append(f)
+            count++
+        }
+    }
+})();
 
 async function goFB() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
     window.open('fb.html')
+    fetch('http://localhost/final/phpFinal/models/fb_connect.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            isCLick: true
+        })
+    })
     rightTitle.innerHTML = '您已連結至您的FB'
     rightBody.innerHTML = ''
     var friend = ''
@@ -131,6 +180,14 @@ topURL.getDownloadURL().then((url) => {
     podcaster.src = url
 })
 
+function goMainpage() {
+    window.location.href = 'mainpage.html'
+}
+
+function goPodcast() {
+    window.location.href = 'podcast.html'
+}
+
 var pods = [
     { title: "職場戀愛史(中)", date: "6/19", time: "43:20" },
     { title: "職場戀愛史(上)", date: "6/18", time: "31:12" },
@@ -152,6 +209,7 @@ var pods = [
     { title: "在談戀以前...(上)", date: "5/10", time: "37:19" },
     { title: "為甚麼想錄這個podcast", date: "5/7", time: "39:16" }
 ]
+
 const list = document.querySelector('.list-wrapper')
 var count = "0"
 while (pod = pods[count]) {

@@ -50,20 +50,54 @@ const top_block_name = document.getElementsByClassName('middle-main-top-block-na
 
 //  取得account的函數 進入頁面會馬上執行一次
 (function getAccount() {
-    fetch('http://localhost/final/phpFinal/models/login_check.php', {
+    var response = await fetch('http://localhost/final/phpFinal/models/login_check.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(response => {
-        response.json().then(result => {
-            account = result.account
-            profile_name.innerHTML = account
-            top_block_name.innerHTML = account
-            getUserInfo()
+    })
+    var result = await response.json()
+    account = result.account
+    profile_name.innerHTML = account
+    top_block_name.innerHTML = account
+    getUserInfo()
+    var response = await fetch('http://localhost/final/phpFinal/models/getPastPodcast.php', {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            account: account
         })
     })
+    var result = await response.json()
+    var podcasts = result.podcasts
+    const blocks = document.querySelectorAll('.podcast-blocks')[0]
+    var count = "0"
+    while (podcast = podcasts[count]) {
+        animal = podcast.animal
+        var nickname = podcast.nickname
+        var title = podcast.title
+        var block = document.createElement('div')
+        block.className = 'podcast-block'
+        var blockImg = document.createElement('img')
+        blockImg.className = 'podcast-block-img'
+        var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + animal + '.png')
+        animalURL.getDownloadURL().then((url) => {
+            blockImg.src = url
+        })
+        var blockName = document.createElement('div')
+        blockName.className = 'podcast-block-name'
+        blockName.innerHTML = nickname
+        var blockTitle = document.createElement('div')
+        blockTitle.className = 'podcast-block-title'
+        blockTitle.innerHTML = title
+        block.append(blockImg,blockName,blockTitle)
+        blocks.prepend(block)
+        count++
+    }
 })();
 
 //  如果已經改過資料 將資料填入input裡

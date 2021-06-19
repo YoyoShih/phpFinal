@@ -82,6 +82,10 @@ function goSearch() {
     window.location.href = 'search.html'
 }
 
+function goPodcast() {
+    window.location.href = 'podcast.html'
+}
+
 var friends = [
     {
         name: "Yoyo",
@@ -115,10 +119,9 @@ var friends = [
     }
 ];
 
-(async function check(){
+(async function check() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
-    window.open('fb.html')
     const response = await fetch('http://localhost/final/phpFinal/models/fb_connect.php', {
         method: "POST",
         headers: {
@@ -140,7 +143,7 @@ var friends = [
             f.className = 'friend'
             var fImg = document.createElement('img')
             fImg.className = 'friend-img'
-            const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/'+friend.animal+'.png')
+            const fURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + friend.animal + '.png')
             await fURL.getDownloadURL().then((url) => {
                 fImg.src = url
             })
@@ -148,12 +151,12 @@ var friends = [
             friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
             var fName = document.createElement('div')
             fName.innerHTML = friend.name
-            f.append(fImg,fLive,fName)
+            f.append(fImg, fLive, fName)
             rightBody.append(f)
             count++
         }
     }
-})()
+})();
 
 async function goFB() {
     const rightTitle = document.querySelector('.right-link-title')
