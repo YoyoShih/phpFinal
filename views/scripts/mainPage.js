@@ -83,8 +83,13 @@ function goSearch() {
 }
 
 function goPodcast() {
-    window.location.href = 'podcast.html'
+    window.location.href = 'podcast.html?open=true'
 }
+
+var thisURL = document.URL;
+var getval = thisURL.split('?')[1];    
+var crOpen = getval.split("=")[1];
+if(crOpen) chat()
 
 async function chat() {
     const rightTitle = document.querySelector('.right-link-title')
