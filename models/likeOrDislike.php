@@ -19,6 +19,7 @@ else{
     $feeling = "UnLike";
 }
 
+
 insertData($username,$object,$feeling,$conn);
 getData($username,$object,$feeling,$conn,$flag);
 
@@ -44,13 +45,16 @@ function getData($username,$object,$feeling,$conn,$flag){
         $user_array["account"]['nickname'] = $row['nickname'];  
         $user_array["account"]['animal'] = $row['animal']; 
         $user_array["account"]['information'] = $row['information'];
+        // $user_array["account"]['match'] = true;
+        $match = dmatch($username,$object,$feeling,$conn);
+        $user_array["account"]['match'] = $match;
         $acc = $row['username'];
         $sql = "INSERT INTO search_info (subject,object) VALUES ('$username','$acc')";
         $result = mysqli_query($conn,$sql);
         echo json_encode( 
-            $user_array    
-        ); 
-    }      
+            $user_array  
+        );  
+    }  
     else{
         $flag = $_SESSION['flag'];
         if($flag>0){
@@ -60,16 +64,28 @@ function getData($username,$object,$feeling,$conn,$flag){
             $user_array["account"]['nickname'] = NULL;  
             $user_array["account"]['animal'] = NULL; 
             $user_array["account"]['information'] = NULL;
+            $user_array["account"]['match'] = NULL;
             echo json_encode( 
                 $user_array    
             ); 
         }
         else{
-            $empty = array();
+            $empty_array = array();
             echo json_encode( 
                 $empty_array     //回傳錯誤
             ); 
         }      
     }  
 }   
+
+function dmatch($username,$object,$feeling,$conn){
+    if($feeling=='Like'){
+        $sql = "SELECT * FROM search_info WHERE subject='$object' AND object='$username' AND feeling='Like'";
+        $result = mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result) == 0)
+            return false;     
+        return true;
+    }
+    return false;
+}
 ?>

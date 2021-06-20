@@ -8,9 +8,7 @@ $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);    
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
-//$username = $_POST['account'];
 $username = $_SESSION['account'];
-//$username = "87white";
 $user_array = array();
 
 getData($username,$conn);

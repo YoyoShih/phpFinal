@@ -73,10 +73,9 @@ const top_block_name = document.getElementsByClassName('middle-main-top-block-na
         })
     })
     var result = await response.json()
-    var podcasts = result.podcasts
     const blocks = document.querySelectorAll('.podcast-blocks')[0]
     var count = "0"
-    while (podcast = podcasts[count]) {
+    while (podcast = result[count]) {
         animal = podcast.animal
         var nickname = podcast.nickname
         var title = podcast.title

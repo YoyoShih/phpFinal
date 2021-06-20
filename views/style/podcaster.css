@@ -261,6 +261,48 @@
   color: #00b8ff;
 }
 
+.friend {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: 8vh;
+  margin-bottom: 2vh;
+  padding-left: 6vw;
+  position: relative;
+}
+
+.friend:hover {
+  background-color: #a2b6db;
+}
+
+.friend-img {
+  background-color: white;
+  height: 5vh;
+  margin-right: 2vw;
+  width: 5vh;
+}
+
+.friend-live {
+  background-color: #00b8ff;
+  border-radius: 10vw;
+  bottom: 1vh;
+  height: 1vh;
+  left: 8.1vw;
+  position: absolute;
+  width: 1vh;
+}
+
+.friend-not-live {
+  background-color: #ff0000;
+  border-radius: 10vw;
+  bottom: 1vh;
+  height: 1vh;
+  left: 8.1vw;
+  position: absolute;
+  width: 1vh;
+}
+
 .background-other {
   animation: move-left 1.5s ease-out 0s 1 normal forwards;
   height: 100vh;

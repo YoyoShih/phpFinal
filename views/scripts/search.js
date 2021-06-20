@@ -68,7 +68,6 @@ async function audioPlay() {
         audio = new Audio(url)
         audio.play()
     })
-    
 }
 
 //  左滑或右滑後的判斷
@@ -89,7 +88,7 @@ function likeOrDislike(obj) {
         })
     }).then(response => {
         response.json().then(result => {
-            var match = result["0"]
+            var match = result.account.match
             if (match) {
                 swal({
                     title: "You get a match!",

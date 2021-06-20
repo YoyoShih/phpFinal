@@ -50,7 +50,7 @@ var account = '';
      animalURL.getDownloadURL().then((url) => {
         top_block_sticker.src = url
      })
-    var response = await fetch('http://localhost/final/phpFinal/models/getPastPodcast.php', {
+    var response = await fetch('http://localhost/final/phpFinal/models/getMusic.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',

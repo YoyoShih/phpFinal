@@ -98,6 +98,12 @@ var friends = [
     }
 ];
 
+const albumImg = document.querySelector('.album-img')
+const imgURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/music_cover/This is acting_Sia_Weird.jpg')
+imgURL.getDownloadURL().then((url) => {
+    albumImg.src = url
+})
+
 (async function check() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
