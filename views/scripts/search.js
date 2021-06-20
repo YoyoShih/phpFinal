@@ -89,7 +89,20 @@ function likeOrDislike(obj) {
         })
     }).then(response => {
         response.json().then(result => {
-            if(!last){
+            var match = result["0"]
+            if (match) {
+                swal({
+                    title: "You get a match!",
+                    text: "Click \"Yes\" button and chat with him/her right now!",
+                    icon: "success",
+                    buttons: true
+                }).then((goChat) => {
+                    if (goChat) {
+                        
+                    }
+                });
+            }
+            if (!last) {
                 audio.pause()
                 accountObj = accountArr.shift()
                 audioPlay()
