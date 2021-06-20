@@ -98,7 +98,7 @@ function likeOrDislike(obj) {
                     buttons: true
                 }).then((goChat) => {
                     if (goChat) {
-                        
+                        window.location.href = 'mainpage.html?crOpen=true'
                     }
                 });
             }
