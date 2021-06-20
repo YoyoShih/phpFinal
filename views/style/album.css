@@ -125,43 +125,44 @@
   height: 22vh;
   margin-top: 12vh;
   padding: 7vw;
-  padding-top: 5vh;
+  padding-top: 7vh;
   width: 41vw;
 }
 
-.podcaster-main {
+.album-main {
   display: flex;
   flex-direction: row;
 }
 
-.podcaster-img {
+.album-img {
   background-color: rgb(199, 199, 199);
   border-radius: 1vw;
-  height: 15vw;
+  height: 14vw;
   margin-right: 3vw;
-  width: 15vw;
+  width: 14vw;
 }
 
-.podcaster-text {
+.album-text {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.podcaster-text > div {
+.album-text > div {
   padding-top: 0.5vh;
+  width: 24vw;
 }
 
-.podcaster-name {
-  font-size: 90px;
+.album-name {
+  font-size: 60px;
 }
 
-.podcaster-fig {
+.album-fig {
   color: #a2b6db;
   font-size: 5px;
 }
 
-.podcaster-info {
+.album-info {
   color: #a2b6db;
   font-size: 5px;
 }
@@ -214,12 +215,13 @@
   align-items: center;
   color: rgb(168, 168, 168);
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  margin-left: 3vw;
   margin-top: 2vw;
-  width: 47vw;
+  width: 40vw;
 }
 
-.pod-title {
+.album-title {
   cursor: pointer;
 }
 
