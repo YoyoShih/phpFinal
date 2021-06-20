@@ -9,38 +9,24 @@ $_POST = json_decode($rest_json, true);
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName); 
 $username = $_SESSION['account'];
+//$username = "rick";
 $podcasts = array();
 
 getData($username,$conn);
 
 function getData($username,$conn){
-    $sql="SELECT podcaster FROM podcast_gamn";   
+    $sql="SELECT i.podcaster, i.title ,u.animal
+          FROM podcast_info as i, podcast_gamn as g, user_info as u
+          WHERE g.username = '$username' AND g.podcaster=i.podcaster 
+                AND g.LikeorDislike = 'like' AND g.podcaster=u.nickname"; 
+    $result = mysqli_query($conn,$sql);
+    for($i=0;$row = mysqli_fetch_array($result);$i++){   
+        $podcasts[$i]['animal'] = $row['animal'];  
+        $podcasts[$i]['nickname'] = $row['podcaster'];  
+        $podcasts[$i]['title'] = $row['title']; 
+    }
+    echo json_encode( 
+        $podcasts       
+    ); 
 }
-// function getData($username,$conn){
-//     $limit = 3;
-//     do{
-//         $sql = "SELECT u.username,u.nickname,u.animal,u.information
-//                 FROM user_info as u
-//                 WHERE NOT EXISTS(SELECT * 
-//                                  FROM search_info as s
-//                                  WHERE s.subject = '$username' AND u.username = s.object)
-//                 EXCEPT(SELECT username,nickname,animal,information FROM user_info WHERE username = '$username')
-//                 ORDER BY RAND() LIMIT $limit";
-//         $username_result = mysqli_query($conn,$sql);
-//         $_SESSION['flag'] = $limit;
-//         $limit--;
-//     }while(!$username_result);
-//     for($i=1;$row = mysqli_fetch_array($username_result);$i++){     
-//         $user_array["account$i"]['account'] = $row['username'];  
-//         $user_array["account$i"]['nickname'] = $row['nickname'];  
-//         $user_array["account$i"]['animal'] = $row['animal']; 
-//         $user_array["account$i"]['information'] = $row['information'];
-//         $acc = $row['username'];
-//         $sql = "INSERT INTO search_info (subject,object) VALUES ('$username','$acc')";
-//         $result = mysqli_query($conn,$sql);
-//     }
-//     echo json_encode( 
-//         $user_array        
-//     ); 
-//  }
 ?>

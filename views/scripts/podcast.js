@@ -61,7 +61,7 @@ var account = '';
         })
     })
     var result = await response.json()
-    var podcasts = result.podcasts
+    var podcasts = result
     const blocks = document.querySelectorAll('.podcast-blocks')[0]
     var count = "0"
     while (podcast = podcasts[count]) {
@@ -73,7 +73,7 @@ var account = '';
         var blockImg = document.createElement('img')
         blockImg.className = 'podcast-block-img'
         var animalURL = storage.refFromURL('gs://phpfinal-2a350.appspot.com/sticker/' + animal + '.png')
-        animalURL.getDownloadURL().then((url) => {
+        await animalURL.getDownloadURL().then((url) => {
             blockImg.src = url
         })
         var blockName = document.createElement('div')

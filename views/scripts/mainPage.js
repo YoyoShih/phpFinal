@@ -90,8 +90,8 @@ async function chat() {
     const rightTitle = document.querySelector('.right-link-title')
     const rightBody = document.querySelector('.right-link-body')
     rightTitle.innerHTML = '聊天室'
-    rightBody.remove()
-    var response = await fetch('http://localhost/final/phpFinal/models/fb_connect.php', {
+    rightBody.innerHTML = ''
+    var response = await fetch('http://localhost/final/phpFinal/models/getChattingFriend.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -102,6 +102,7 @@ async function chat() {
         })
     })
     var result = await response.json()
+    console.log(result)
     var count = "0"
     while (friend = result[count]) {
         var f = document.createElement('div')
@@ -115,15 +116,19 @@ async function chat() {
         var fLive = document.createElement('div')
         friend.live ? fLive.className = 'friend-live' : fLive.className = 'friend-not-live'
         var fName = document.createElement('div')
-        fName.innerHTML = friend.name
+        fName.innerHTML = friend.nickname
         f.append(fImg, fLive, fName)
-        f.addEventListener('click', chatroom())
+        f.addEventListener('click', () => {
+            chatroom()
+        })
         rightBody.append(f)
         count++
     }
 }
 
 async function chatroom() {
+    const rightBody = document.querySelector('.right-link-body')
+    rightBody.remove()
     const right = document.querySelector('.right-link')
     var chatroom = document.createElement('div')
     chatroom.className = 'right-link-chatroom'
@@ -138,7 +143,7 @@ async function chatroom() {
     header.append(name,back)
     var texts = document.createElement('div')
     texts.className = 'chatroom-texts'
-    var response = await fetch('http://localhost/final/phpFinal/models/text.php', {
+    var response = await fetch('http://localhost/final/phpFinal/models/getText.php', {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -146,10 +151,12 @@ async function chatroom() {
         }
     })
     var result = await response.json()
-    var count = "0"
+    //console.log(result)
+    var nowAcc = result["0"]["owner"]
+    var count = "1"
     while (object = result[count]) {
         var text = document.createElement('p')
-        text.className = object.owner == 'me' ? 'text-mine' : 'text-other'
+        text.className = object.owner == nowAcc ? 'text-mine' : 'text-other'
         text.innerHTML = object.content
         texts.append(text)
         count++
@@ -162,7 +169,9 @@ async function chatroom() {
     var textSubmit = document.createElement('input')
     textSubmit.className = 'control-submit'
     textSubmit.type = 'submit'
-    textSubmit.addEventListener('click',sendMessage())
+    textSubmit.addEventListener('click',() => {
+        sendMessage()
+    })
     control.append(textInput,textSubmit)
     chatroom.append(header, texts, control)
     right.append(chatroom)
@@ -171,7 +180,7 @@ async function chatroom() {
 async function sendMessage() {
     const texts = document.querySelector('.chatroom-texts')
     var input = document.querySelector('.control-text').value
-    await fetch('http://localhost/final/phpFinal/models/text.php', {
+    await fetch('http://localhost/final/phpFinal/models/uploadText.php', {
         method: "POST",
         headers: {
             'Accept': 'application/json',
